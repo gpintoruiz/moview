@@ -1,0 +1,25 @@
+footer.footer{
+    background: #121212;
+    display: flex;
+    padding: 8%;
+}
+
+footer>#logo-footer{
+    width: 10vw;
+    height: 5vw;
+}
+
+footer>div{
+    margin-left: 3%;
+    margin-right: 10%;
+}
+
+footer>div>p{
+    color: #B3B3B3;
+    margin: 0 0;
+    margin-left: 4%;
+}
+
+#parrafo-2{
+    margin-top: 2%;
+}
