@@ -4,7 +4,7 @@ import Carrusel from '../components/Carrusel'
 
 const Index = () => {
   return (
-    <Carrusel/>
+     <Carrusel/>
   )
 }
 

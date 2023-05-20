@@ -4,7 +4,7 @@ body {
   
   #Carousel{
     position: flex;
-    width: 100%;
+    width: 100vw;
   }
   
   #poster1, #poster2, #poster3 {
