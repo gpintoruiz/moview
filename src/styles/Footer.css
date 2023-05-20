@@ -2,6 +2,7 @@ footer.footer{
     background: #121212;
     display: flex;
     padding: 8%;
+    width: 100vw;
 }
 
 footer>#logo-footer{
@@ -10,8 +11,8 @@ footer>#logo-footer{
 }
 
 footer>div{
-    margin-left: 3%;
-    margin-right: 10%;
+    /* margin-left: 3%; */
+    /* margin-right: 10%; */
 }
 
 footer>div>p{
@@ -20,6 +21,6 @@ footer>div>p{
     margin-left: 4%;
 }
 
-#parrafo-2{
+/* #parrafo-2{
     margin-top: 2%;
-}
+} */

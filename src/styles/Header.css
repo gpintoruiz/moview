@@ -21,10 +21,10 @@ nav{
   height: 1.2vw;
 }
 
-.link{
+/* .link{
   text-decoration: none;
-  margin: 50px 40px;
-}
+  margin: 1rem 2rem;
+} */
 
 .link:visited{
   color: white;
@@ -35,7 +35,7 @@ nav{
   display: none;
 }
 
-.container-icon-nav{
+/* .container-icon-nav{
   margin: 0px 50px 0px 50px;
-}
+} */
 

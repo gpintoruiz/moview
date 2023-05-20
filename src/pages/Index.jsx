@@ -1,10 +1,11 @@
 import React from 'react'
 import '../styles/Global.css'
-import Carrusel from '../components/Carrusel'
+// import CarouselFadeExample from '../components/Carrusel'
+// import StaticExample from '../components/Modal'
 
-const Index = () => {
+function Index() {
   return (
-    <Carrusel/>
+    <></>
   )
 }
 
