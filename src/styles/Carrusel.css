@@ -1,4 +1,5 @@
 body {
+<<<<<<< HEAD
     background-color: black;
   }
   
@@ -30,3 +31,47 @@ body {
   #sinopsis-poster1, #sinopsis-poster2, #sinopsis-poster3  {
     text-align: justify;
   }
+=======
+  background-color: black;
+}
+
+#Carousel{
+  position: absolute;
+  width: 100%;
+  height: 150%;
+  overflow-y: hidden;
+  z-index: -150;
+  top: -80px;
+
+}
+
+#poster1, #poster2, #poster3 {
+  width: 100%;
+  opacity: 0.2;
+}
+
+.estrella {
+  display: inline;  
+  margin: 3px;
+  width: 35px;
+}
+
+
+.duracion > img {
+  padding-bottom: 5px;
+  width: 35px;
+}
+
+#pos1-estrella5 {
+  display: none;
+}
+
+.caption {
+  top: 30%;
+
+}
+
+#sinopsis-poster1, #sinopsis-poster2, #sinopsis-poster3  {
+  text-align: justify;
+}
+>>>>>>> 290dc7cec6ad32ab887e5e07ab5a0d3936a3dc05

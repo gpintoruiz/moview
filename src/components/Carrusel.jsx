@@ -6,7 +6,11 @@ import clock from '../img/duration-white.png'
 
 function CarouselFadeExample() {
   return (
+<<<<<<< HEAD
     <Carousel id="Carousel">
+=======
+      <Carousel fade id="Carousel">
+>>>>>>> 290dc7cec6ad32ab887e5e07ab5a0d3936a3dc05
         <Carousel.Item >
         <img id="poster1"src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg?region=0%2C0%2C540%2C810" alt="Cruella" className="d-block w-100"/>
           <Carousel.Caption className="caption">
@@ -52,7 +56,11 @@ function CarouselFadeExample() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+<<<<<<< HEAD
   );
+=======
+    );
+>>>>>>> 290dc7cec6ad32ab887e5e07ab5a0d3936a3dc05
 }
 
 export default CarouselFadeExample;
