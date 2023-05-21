@@ -5,11 +5,7 @@ import '../styles/Global.css'
 
 function Index() {
   return (
-<<<<<<< HEAD
      <Carrusel/>
-=======
-    <CarouselFadeExample/>
->>>>>>> 290dc7cec6ad32ab887e5e07ab5a0d3936a3dc05
   )
 }
 
