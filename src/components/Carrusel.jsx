@@ -6,7 +6,7 @@ import clock from '../img/duration-white.png'
 
 function CarouselFadeExample() {
   return (
-      <Carousel fade id="Carousel">
+      <Carousel id="Carousel">
         <Carousel.Item >
         <img id="poster1"src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg?region=0%2C0%2C540%2C810" alt="Cruella" className="d-block w-100"/>
           <Carousel.Caption className="caption">
