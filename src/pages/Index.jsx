@@ -5,7 +5,7 @@ import '../styles/Global.css'
 
 function Index() {
   return (
-     <Carrusel/>
+     <CarouselFadeExample/>
   )
 }
 
