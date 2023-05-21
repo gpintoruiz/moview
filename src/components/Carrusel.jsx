@@ -52,11 +52,7 @@ function CarouselFadeExample() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-<<<<<<< HEAD
   );
-=======
-    );
->>>>>>> 290dc7cec6ad32ab887e5e07ab5a0d3936a3dc05
 }
 
 export default CarouselFadeExample;
