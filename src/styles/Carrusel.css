@@ -1,15 +1,9 @@
-body {
-  background-color: black;
-}
 
 #Carousel{
   position: absolute;
   width: 100%;
   height: 150%;
   overflow-y: hidden;
-  z-index: -150;
-  top: -80px;
-
 }
 
 #poster1, #poster2, #poster3 {
