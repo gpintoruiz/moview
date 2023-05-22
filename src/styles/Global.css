@@ -3,9 +3,13 @@
 * {
     box-sizing: border-box;
     font-family:'Roboto', sans-serif;
-    color: #EBE9E8;
 }
 
+#inTheater, #Trending{
+    margin-left: 15px;
+    color: white;
+    
+}
 body {
     background-color: black !important;
 }
