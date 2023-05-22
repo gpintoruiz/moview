@@ -32,6 +32,8 @@
 
 .caption > h2, .caption > p {
   font-size: 2vw;
+  margin: 4px;
+  padding: 1px;
 }
 
 #sinopsis-poster1, #sinopsis-poster2, #sinopsis-poster3  {
