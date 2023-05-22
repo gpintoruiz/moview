@@ -8,7 +8,7 @@ function CarouselFadeExample() {
   return (
       <Carousel id="Carousel">
         <Carousel.Item >
-        <img id="poster1"src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg?region=0%2C0%2C540%2C810" alt="Cruella" className="d-block w-100"/>
+        <img id="poster1"src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg?region=0%2C0%2C540%2C810" alt="Cruella"/>
           <Carousel.Caption className="caption">
           <h2 id="titulo-poster1">Cruella</h2>
                   <div id="puntuacion-poster1"/>
@@ -23,7 +23,7 @@ function CarouselFadeExample() {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block w-100" id="poster2" src="https://i.ebayimg.com/images/g/4gcAAOSwxPJhyxYq/s-l1600.jpg" alt="SpaceJam2"/>
+          <img  id="poster2" src="https://i.ebayimg.com/images/g/4gcAAOSwxPJhyxYq/s-l1600.jpg" alt="SpaceJam2"/>
           <Carousel.Caption className="caption">
             <h2 id="titulo-poster2">Space Jam 2</h2>
             <img id="pos2-estrella1" className="estrella" src={estrella} alt="Estrella"/>
@@ -37,7 +37,7 @@ function CarouselFadeExample() {
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-        <img className="d-block w-100" id="poster3" src="https://palomaynacho.com/wp-content/uploads/2023/04/guardianes-de-la-galaxia-vol-3-poster-2-imax.jpg" alt="SpaceJam2"/>
+        <img id="poster3" src="https://palomaynacho.com/wp-content/uploads/2023/04/guardianes-de-la-galaxia-vol-3-poster-2-imax.jpg" alt="SpaceJam2"/>
           <Carousel.Caption className="caption">
             <h2 id="titulo-poster3">Guardianes de la galaxia vol 3</h2>
             <img id="pos3-estrella1" className="estrella" src={estrella} alt="Estrella"/>
@@ -52,7 +52,7 @@ function CarouselFadeExample() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-    );
+  );
 }
 
 export default CarouselFadeExample;

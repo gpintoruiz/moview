@@ -7,7 +7,6 @@ import NavScrollExample from './components/NavBootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-
 function App() {
   return (
     <Router>
