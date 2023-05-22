@@ -7,9 +7,11 @@
 
 #inTheater, #Trending{
     margin-left: 15px;
+    font-size: 2.8vw;
     color: white;
     
 }
+
 body {
     background-color: black !important;
 }

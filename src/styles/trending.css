@@ -1,0 +1,43 @@
+    .g-4 {
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    }
+   
+    .t-card{
+     height: 40vw !important;
+     padding: 0px !important;
+     margin-left:10px;
+     margin-right:10px;
+    }
+   
+    .t-star{
+     display: inline;
+     margin-bottom: 1px;
+     width: 3vw;
+    }
+   
+    .t-text > h3, .t-text > p {
+     color:rgb(0, 0, 0) !important; 
+     margin: 2px;
+     font-size: 1.8vw;
+    }
+    
+    #t-overlay {
+     top: 40vw;
+     overflow: hidden;
+    }
+   
+    .t-card:hover .t-card-img {
+       opacity:0.2;
+    } 
+   
+    .t-card:hover #t-overlay{
+     top: .5vw;
+     transition: all 1.5s;
+    }
+ 
+   .t-card-img {
+     width: 100% !important; 
+     height: 100% !important;
+    }
