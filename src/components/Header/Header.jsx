@@ -9,7 +9,7 @@ import notification from '../../img/campana-white.png'
 import userIcon from '../../img/user-white.png'
 import buscador from '../../img/lupa-white.png'
 
-function NavScrollExample() {
+function NavHeader() {
   return (
     <Navbar bg="transparent" variant="dark" expand="lg">
       <Container fluid>
@@ -32,4 +32,4 @@ function NavScrollExample() {
   );
 }
 
-export default NavScrollExample;
+export default NavHeader;

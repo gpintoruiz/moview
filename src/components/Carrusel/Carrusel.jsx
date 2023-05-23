@@ -4,7 +4,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import estrella from '../../img/estrella.png';
 import clock from '../../img/duration-white.png'
 
-function CarouselFadeExample() {
+function MainCarrusel() {
   return (
       <Carousel id="Carousel">
         <Carousel.Item >
@@ -55,4 +55,4 @@ function CarouselFadeExample() {
   );
 }
 
-export default CarouselFadeExample;
+export default MainCarrusel;
