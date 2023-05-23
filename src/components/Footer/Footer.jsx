@@ -9,7 +9,7 @@ import Juan from '../Presentation/Juan';
 import Jose from '../Presentation/Jose';
 
 
-function ContainerFluidExample() {
+function Footer() {
   return (
     <Container fluid style={{backgroundColor:'#121212'}} className='p-5'>
 
@@ -53,4 +53,4 @@ function ContainerFluidExample() {
   );
 }
 
-export default ContainerFluidExample;
+export default Footer;
