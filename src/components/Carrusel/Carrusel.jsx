@@ -1,8 +1,8 @@
 import React from 'react'
-import '../styles/Carrusel.css'
+import './Carrusel.css'
 import Carousel from 'react-bootstrap/Carousel';
-import estrella from '../img/estrella.png';
-import clock from '../img/duration-white.png'
+import estrella from '../../img/estrella.png';
+import clock from '../../img/duration-white.png'
 
 function CarouselFadeExample() {
   return (

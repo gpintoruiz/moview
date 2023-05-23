@@ -3,12 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import '../styles/navBootstrap.css'
-import icono from '../img/logo.png'
-import notification from '../img/campana-white.png'
-import userIcon from '../img/user-white.png'
-import buscador from '../img/lupa-white.png'
+import './Header.css'
+import icono from '../../img/icon.jpg'
+import notification from '../../img/campana-white.png'
+import userIcon from '../../img/user-white.png'
+import buscador from '../../img/lupa-white.png'
 
 function NavScrollExample() {
   return (

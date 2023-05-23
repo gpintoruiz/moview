@@ -1,8 +1,8 @@
 import React from 'react'
-import '../styles/Global.css'
-import CarouselFadeExample from '../components/Carrusel'
-import Theater from '../components/inTheater'
-import Trending from '../components/Trending'
+import '../Global.css'
+import CarouselFadeExample from '../components/Carrusel/Carrusel'
+import Theater from '../components/InTheater/InTheater'
+import Trending from '../components/Trending/Trending'
 // import StaticExample from '../components/Modal'
 
 function Index() {

@@ -1,6 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
-import star from '../img/estrella.png'
-import '../styles/inTheater.css'
+import star from '../../img/estrella.png'
+import './InTheater.css'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 function inTheater() {

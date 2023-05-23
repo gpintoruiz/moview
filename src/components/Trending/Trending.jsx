@@ -1,6 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
-import star from '../img/estrella.png'
-import '../styles/trending.css'
+import star from '../../img/estrella.png'
+import './Trending.css'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 
