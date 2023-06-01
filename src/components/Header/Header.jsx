@@ -13,7 +13,7 @@ function NavHeader() {
     <Navbar bg="transparent" variant="dark" expand="lg">
       <Container fluid>
       <Link to='/'>
-        <img className='m-3' id='icono' src={icono} alt='icono' style={{width:'120px',backgroundColor:'transparent'}}></img>
+        <img className='m-3 bg-transparent' id='icono' src={icono} alt='icono' style={{width:'120px'}}></img>
       </Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
