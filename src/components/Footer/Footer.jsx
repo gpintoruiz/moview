@@ -19,7 +19,7 @@ function Footer() {
         {/* Código de la primera columna que tiene el logo */}
         <Col className='col d-flex align-items-center justify-content-center m-3'>
           <Link to='/'>
-            <img src={logo} alt="Moview" className='' width={180}/>
+            <img src={logo} alt="Moview" width={180}/>
           </Link>
         </Col>
 
