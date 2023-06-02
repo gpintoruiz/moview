@@ -1,5 +1,5 @@
 import { useState, React  }  from 'react';
-import { Container, Row, Col, Card, Form, Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Modal, InputGroup } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 
 function Login() {
@@ -8,6 +8,8 @@ function Login() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [showPwd, setShowPwd] = useState(false)
 
   return (
     <>
@@ -24,7 +26,13 @@ function Login() {
 
           <Form.Group className='mb-4 mx-5 w-100'>
             <Form.Label className='text-black'>Password</Form.Label>
-            <Form.Control type='password' size='lg' placeholder='Password'/>
+            <InputGroup>
+              <Form.Control type={showPwd ? 'text' : 'password' } size='lg' placeholder='Password' style={{borderRadius:'10px'}}/>
+              <div id="ShowPasswordHandler" onClick={() => setShowPwd(!showPwd)}>
+                {showPwd ? <Button className='bi bi-eye-fill' variant="lg outline-secondary" style={{border:'none',color:'black'}}></Button> 
+                : <Button className='bi bi-eye-slash-fill' variant="lg outline-secondary" style={{border:'none',color:'black'}}></Button>}
+              </div>
+            </InputGroup>
           </Form.Group>
 
           <p className="small mb-3 pb-lg-2">
