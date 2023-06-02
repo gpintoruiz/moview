@@ -4,11 +4,12 @@
     margin-bottom: 15px;
     }
    
-    .t-card{
+    .t-card {
      height: 40vw !important;
      padding: 0px !important;
      margin-left:10px;
      margin-right:10px;
+     border: 0px !important;
     }
    
     .t-star{

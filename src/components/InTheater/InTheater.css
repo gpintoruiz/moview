@@ -3,12 +3,12 @@
    margin-top: 15px;
    margin-bottom: 15px;
    }
-  
-   .card{
+   .card {
     height: 40vw !important;
     padding: 0px !important;
     margin-left:10px;
     margin-right:10px;
+    border: 0px !important;
    }
   
    .star{
