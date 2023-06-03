@@ -7,8 +7,11 @@ import Row from 'react-bootstrap/Row';
 function Trending() {
   return (
     <Carousel fade>
+      {/* Codigo 1er Slide del Carrusel */}
       <Carousel.Item>
+      {/* Codigo de la fila que asegura que siempre se muestren 3 cards sin importar el viewport */}
       <Row xs={4} md={4} className="g-4">
+          {/* 1era Card */}
           <Card className="t-card">
           <Card.Img id="t-card1-img" className='t-card-img' src='https://m.media-amazon.com/images/M/MV5BMDNhZWU4NTQtYjk1NS00MTM1LTg3ODYtMzE0MjQ2YTI5MGM4XkEyXkFqcGdeQXVyMDc5ODIzMw@@._V1_FMjpg_UX1000_.jpg' alt="Card image" />
           <Card.ImgOverlay id="t-overlay">
@@ -25,6 +28,7 @@ function Trending() {
           </Card.ImgOverlay>
           </Card>
 
+          {/* 2da Card */}
           <Card className="t-card">
           <Card.Img id="t-card2-img"  className='t-card-img' src='https://www.mubis.es/media/users/12828/314879/trailer-y-poster-de-the-mother-original.jpg' alt="Card image" />
           <Card.ImgOverlay id="t-overlay">
@@ -41,6 +45,7 @@ function Trending() {
           </Card.ImgOverlay>
           </Card>
 
+          {/* 3ra Card */}
           <Card className="t-card">
           <Card.Img id="t-card3-img"  className='t-card-img' src='https://i.ebayimg.com/images/g/b-AAAOSwfOBkEoXc/s-l500.jpg' alt="Card image" />
           <Card.ImgOverlay id="t-overlay">
@@ -59,8 +64,10 @@ function Trending() {
       </Row>
       </Carousel.Item>
 
+      {/* Codigo del 2do slide del carrusel */}
       <Carousel.Item>
       <Row xs={4} md={4} className="g-4">
+          {/* 1era Card */}
           <Card className="t-card">
           <Card.Img id="t-card1-img" className='t-card-img' src='https://www.joblo.com/wp-content/uploads/2023/04/Hypnotic-poster-1-691x1024.jpg' alt="Card image" />
           <Card.ImgOverlay id="t-overlay">
@@ -77,6 +84,7 @@ function Trending() {
           </Card.ImgOverlay>
           </Card>
 
+          {/* 2da Card */}
           <Card className="t-card">
           <Card.Img id="t-card5-img" className="t-card-img" src='https://m.media-amazon.com/images/M/MV5BNzg3OTEzMTgtYWU0OC00YTI0LWIxOTAtNmRkNTc0Nzg2YWU1XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_FMjpg_UX1000_.jpg' alt="Card image" />
           <Card.ImgOverlay id="t-overlay">
@@ -93,6 +101,7 @@ function Trending() {
           </Card.ImgOverlay>
           </Card>
 
+          {/* 3era Card */}
           <Card className="t-card">
           <Card.Img id="t-card6-img" className="t-card-img" src='https://www.ecartelera.com/carteles/6800/6851/001_p.jpg' alt="Card image" />
           <Card.ImgOverlay id="t-overlay">
@@ -108,6 +117,7 @@ function Trending() {
             </Card.Text>
           </Card.ImgOverlay>
           </Card>
+          
       </Row>
       </Carousel.Item>
     </Carousel>

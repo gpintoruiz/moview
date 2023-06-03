@@ -35,10 +35,10 @@ function Footer() {
         <Col className='list-unstyled text-center m-3'>
           <p className='h4'>Social Networks</p>
           <li className='col'>
-            <Link><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'white'}}></i></Link>
-            <Link><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'white'}}></i></Link>
-            <Link><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'white'}}></i></Link>
-            <Link><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'white'}}></i></Link>
+            <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://www.youtube.com" target="_blank"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
           </li>
         </Col>
       </Row>

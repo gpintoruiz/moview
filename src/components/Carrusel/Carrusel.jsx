@@ -7,8 +7,11 @@ import clock from '../../img/duration-white.png'
 function MainCarrusel() {
   return (
       <Carousel id="Carousel">
+        {/* Creacion Del 1er "slide" del carrusel */}
         <Carousel.Item >
+        {/* Imagen de fondo */}
         <img id="poster1"src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg?region=0%2C0%2C540%2C810" alt="Cruella"/>
+          {/* El caption del carrusel que contiene todo el texto que se muestra en el slide */}
           <Carousel.Caption className="caption">
           <h2 id="titulo-poster1">Cruella</h2>
                   <div id="puntuacion-poster1"/>
@@ -22,8 +25,12 @@ function MainCarrusel() {
                   <p id="sinopsis-poster1">Plot: A live-action prequel feature film following a young Cruella de Vil and how she was 'raised'.</p>
           </Carousel.Caption>
         </Carousel.Item>
+
+        {/* Creacion Del 2do "slide" del carrusel */}
         <Carousel.Item>
+          {/* Imagen de fondo */}
           <img  id="poster2" src="https://i.ebayimg.com/images/g/4gcAAOSwxPJhyxYq/s-l1600.jpg" alt="SpaceJam2"/>
+          {/* El caption del carrusel que contiene todo el texto que se muestra en el slide */}
           <Carousel.Caption className="caption">
             <h2 id="titulo-poster2">Space Jam 2</h2>
             <img id="pos2-estrella1" className="estrella" src={estrella} alt="Estrella"/>
@@ -36,8 +43,12 @@ function MainCarrusel() {
             <p id="sinopsis-poster2">Plot: La superestrella del baloncesto LeBron James se une a la banda de los Looney Tunes para derrotar al Goon Squad y salvar a su hijo.</p>
           </Carousel.Caption>
         </Carousel.Item>
+
+        {/* Creacion Del 3er "slide" del carrusel */}
         <Carousel.Item>
+        {/* Imagen de fondo del Slide */}
         <img id="poster3" src="https://palomaynacho.com/wp-content/uploads/2023/04/guardianes-de-la-galaxia-vol-3-poster-2-imax.jpg" alt="SpaceJam2"/>
+          {/* El caption del carrusel que contiene todo el texto que se muestra en el slide */}
           <Carousel.Caption className="caption">
             <h2 id="titulo-poster3">Guardianes de la galaxia vol 3</h2>
             <img id="pos3-estrella1" className="estrella" src={estrella} alt="Estrella"/>
@@ -52,6 +63,9 @@ function MainCarrusel() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      /* Nota, El carrusel tiene tantos ids diferentes, porque se espera que al implementar la base de 
+      datos y el backend cosas como el titulo, la puntuacion (cantidad de estrellas), los generos, la 
+      duracion y la sinopsis de cada pelicula se actualize automaticamente */
   );
 }
 
