@@ -65,6 +65,7 @@ import { AuthContext } from '../../../../AuthContext';
         // Aquí puedes establecer una variable global o de estado para indicar que el usuario está logueado
         // Por ejemplo:
         setIsLoggedIn(true);
+        setShow(false);
         navigate('/comprobar'); 
       } else {
         // Credenciales incorrectas
