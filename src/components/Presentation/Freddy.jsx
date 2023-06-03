@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {Col, Row} from 'react-bootstrap';
-import Guille from '../../img/Guillermo.jpg';
+import freddy from '../../img/freddy.jpg';
 import './Presentation.css'
 
 function Freddy() {
@@ -25,15 +25,15 @@ function Freddy() {
         <Row className='d-flex align-items-center justify-content-center'>
           {/* 1era Columna del Modal (Imagen de Freddy) */}
           <Col xs={10} sm={4} lg={4} className='imgProgramador d-flex align-items-center justify-content-center' style={{marginright:'3px', marginBottom:'5px'}}> 
-            <img src={Guille} alt="imagen de Freddy" className='ml-3'/>
+            <img src={freddy} alt="imagen de Freddy" className='ml-3'/>
           </Col>
           {/* 2da Columna del Modal (Informacion Sobre Freddy) */}
           <Col xs={12} sm={8} lg={8} className='datosProgramador p-4 d-flex flex-column'> 
 
             <h3>Freddy Santiago Galan Figueroa</h3>
-            <p><b>Alias:</b> Apasionado de la programación.</p>
-            <p><b>Objetivo:</b> Combinar mis conocimientos técnicos con mi interés en la inteligencia artificial, 
-            especialmente en Machine learning y deep learning.</p>
+            <p><b>Alias:</b> FrontGuy.</p>
+            <p><b>Objetivo:</b> Mi objetivo a futuro es obtener mayor experiencia en la ciencia de datos y 
+            el business intelligence para el mejoramiento de la eficacia de empresas en diversas áreas.</p>
             <p><b>Habilidades:</b> Manejo de Phyton, Java, C++, desarrollo web y bases de datos.</p>
             <p><b>Hobbies:</b> Jugar Videojuegos y practicar Voleibol.</p>
             <p><b>Redes Sociales:</b></p>
