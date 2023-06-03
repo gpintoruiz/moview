@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Guille from '../../img/Guillermo.jpg';
-import {Col, Row, Card} from 'react-bootstrap';
+import {Col, Row} from 'react-bootstrap';
 import './Presentation.css'
 
 function Guillermo() {
