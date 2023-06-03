@@ -12,7 +12,7 @@ const Error404 = () => {
           <source src={ErrorGif} type="video/mp4"/>
         </video>
         <h1 id='e-Letras'>Parece que te encuentras un poco perdido</h1>
-        <Button variant="outline-dark"><Link to='/' className='text-decoration-none'>Regresar</Link></Button>
+        <Link to='/' className='text-decoration-none'><Button variant="outline-light">Regresar</Button></Link>
       </div>
     </Container>
   );

@@ -21,8 +21,8 @@ function NavHeader() {
         <Navbar.Collapse id="navbarScroll">
           {/* Codigo del nav que contiene el boton de home, help, notificaciones y el de Login */}
           <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
-              <Button variant='outline-secondary' className='me-3' style={{border:'none'}} ><Link to='/' className='text-decoration-none' style={{color:'white'}}>Home</Link></Button>
-              <Button variant='outline-secondary' className='me-3' style={{border:'none',color:'white'}}><Link to='/help' className='text-decoration-none' style={{color:'white'}}>Help</Link></Button>
+              <Link to='/'><Button variant="outline-secondary" className='me-4' style={{border:'none', color:'white'}}>Home</Button></Link>
+              <Link to='/help'><Button variant="outline-secondary" className='me-4' style={{border:'none', color:'white'}}>Help</Button></Link>
               <Notification/>
               <Login/>
           </Nav>

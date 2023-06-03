@@ -13,8 +13,8 @@
 }
 
 .datosProgramador p {
-    text-align: justify;
-    margin: 1px;
+    /* text-align: justify; */
+    margin: 2px;
     font-size: 1rem;
 }
 
