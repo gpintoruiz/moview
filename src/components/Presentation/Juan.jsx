@@ -36,7 +36,7 @@ function Juan() {
             de la vida cotidiana que fueron modelados por medio de la programación.</p>
             <p><b>Habilidades:</b> Manejo basico de Phyton, Java, C++, desarrollo web y bases de datos.</p>
             <p><b>Hobbies:</b> Jugar Videojuegos y practicar Baloncesto.</p>
-            <p><b>Redes Sociales:</b></p>
+            <p style={{alignSelf:'center'}}><b>Redes sociales</b></p>
 
             <Col className='list-unstyled text-center m-3' style={{marginTop:'0px'}}>
             {/* Redes Sociales del estudiante (No hubo un consenso de quienes tenian cuales,

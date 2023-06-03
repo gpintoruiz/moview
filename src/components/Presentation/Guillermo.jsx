@@ -36,7 +36,7 @@ function Guillermo() {
               especialmente en Machine learning y deep learning.</p>
               <p><b>Habilidades:</b> Manejo de Phyton, Java, C++, desarrollo web y bases de datos.</p>
               <p><b>Hobbies:</b> Jugar Voleibol.</p>
-              <p><b>Redes sociales</b></p>
+              <p style={{alignSelf:'center'}}><b>Redes sociales</b></p>
 
               <Col className='list-unstyled text-center m-3' style={{marginTop:'0px'}}>
               {/* Redes Sociales del estudiante (No hubo un consenso de quienes tenian cuales,
