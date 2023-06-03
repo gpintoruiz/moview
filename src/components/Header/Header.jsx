@@ -18,8 +18,8 @@ function NavHeader() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll >
-              <Button variant='outline-secondary' className='me-3' style={{border:'none',color:'white'}}>Home</Button>
-              <Button variant='outline-secondary' className='me-3' style={{border:'none',color:'white'}}>Help</Button>
+              <Button variant='outline-secondary' className='me-3' style={{border:'none'}} ><Link to='/' className='text-decoration-none' style={{color:'white'}}>Home</Link></Button>
+              <Button variant='outline-secondary' className='me-3' style={{border:'none',color:'white'}}><Link to='/help' className='text-decoration-none' style={{color:'white'}}>Help</Link></Button>
               <Notification/>
               <Login/>
           </Nav>
