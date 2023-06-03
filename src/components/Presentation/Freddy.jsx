@@ -36,7 +36,7 @@ function Freddy() {
             el business intelligence para el mejoramiento de la eficacia de empresas en diversas áreas.</p>
             <p><b>Habilidades:</b> Manejo de Phyton, Java, C++, desarrollo web y bases de datos.</p>
             <p><b>Hobbies:</b> Jugar Videojuegos y practicar Voleibol.</p>
-            <p><b>Redes Sociales:</b></p>
+            <p style={{alignSelf:'center'}}><b>Redes sociales</b></p>
 
             <Col className='list-unstyled text-center m-3' style={{marginTop:'0px'}}>
             {/* Redes Sociales del estudiante (No hubo un consenso de quienes tenian cuales,
