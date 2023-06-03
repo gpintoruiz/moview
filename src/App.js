@@ -5,23 +5,24 @@ import Help from "./pages/Help"
 import Footer from "./components/Footer/Footer";
 import NavHeader from './components/Header/Header'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Auth from "./pages/comprobar";
 import Error from "./pages/Error404/Error404"
-
+import Comprobar from "./pages/Comprobar";
+import { AuthProvider } from './AuthContext';
 
 function App() {
-
   return (
-    <Router>
-      <NavHeader />
-      <Routes>
-        <Route index element={<Index />}/>
-        <Route path="/help" element={<Help />}/>
-        <Route path="/auth" element={<Auth/>}/>
-        <Route path="*" element={<Error/>}/>
-      </Routes>
-      <Footer />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <NavHeader />
+        <Routes>
+          <Route index element={<Index />} />
+          <Route path="/help" element={<Help />} />
+          <Route path="*" element={<Error />} />
+          <Route path='/comprobar' element={<Comprobar />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 

@@ -2,6 +2,8 @@ import { Form, Button, Modal, InputGroup } from 'react-bootstrap';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
+import { AuthContext } from '../../../../AuthContext';
+
 
 
   function Login() {
@@ -31,6 +33,7 @@ import React, { useState, useContext } from 'react';
 
     // Lógica de el login
 
+    const { setIsLoggedIn } = useContext(AuthContext);
     const [email, setEmail] = useState('')
     const [password,setPassword] = useState('')
     const navigate = useNavigate();
@@ -58,8 +61,8 @@ import React, { useState, useContext } from 'react';
         console.log('Login successful');
         // Aquí puedes establecer una variable global o de estado para indicar que el usuario está logueado
         // Por ejemplo:
-        // setUserLoggedIn(true);
-        navigate('src\pages\comprobar.jsx'); // Cambia '/mycomponent' a la ruta de tu componente MyComponent
+        setIsLoggedIn(true);
+        navigate('/comprobar'); 
       } else {
         // Credenciales incorrectas
         console.log('Invalid email or password');
@@ -67,9 +70,6 @@ import React, { useState, useContext } from 'react';
     };
     
     
-    
-    
-
     // Este código me ayuda a mostrar unos mensajes cuando el botón es clickeado comprobando si el reCAPTCHA esté verificado y los campos estén llenos
 
     const [isButtonClicked, setIsButtonClicked] = useState(false);
