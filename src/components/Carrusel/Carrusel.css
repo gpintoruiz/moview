@@ -46,4 +46,8 @@
     margin: 4px;
     padding: 1px;
   }
+
+  .caption {
+    top: 15vw;
+  }
 }
