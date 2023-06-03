@@ -8,7 +8,7 @@ const Error404 = () => {
   return (
     <Container className="e-Container">
        <div class="e-Container">
-        <video loop={'true'} autoPlay>
+        <video autoPlay={'true'} loop={'true'} controls >
           <source src={ErrorGif} type="video/mp4"/>
         </video>
         <h1 id='e-Letras'>Parece que te encuentras un poco perdido</h1>
