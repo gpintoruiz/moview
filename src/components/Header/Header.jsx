@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import icono from '../../img/icon.jpg'
-import Login from './Buttons/Login/Login'
-import Notification from './Buttons/Notification/Notification';
+import Login from '../Login/Login'
+import Notification from '../Notification/Notification';
 import { Link } from 'react-router-dom';
 
 function NavHeader() {

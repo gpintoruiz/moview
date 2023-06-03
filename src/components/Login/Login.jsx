@@ -2,7 +2,7 @@ import { Form, Button, Modal, InputGroup } from 'react-bootstrap';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../../../AuthContext';
+import { AuthContext } from '../../AuthContext';
 
 
 
@@ -65,7 +65,7 @@ import { AuthContext } from '../../../../AuthContext';
         // Aquí puedes establecer una variable global o de estado para indicar que el usuario está logueado
         // Por ejemplo:
         setIsLoggedIn(true);
-        setShow(false);
+        handleClose();
         navigate('/comprobar'); 
       } else {
         // Credenciales incorrectas
