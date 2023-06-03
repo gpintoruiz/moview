@@ -8,10 +8,8 @@
     font-family: 'Open Sans', sans-serif;
   }
   
-.e-Container video{
+.e-Container img{
     width: 45vmax;
-    margin: 0;
-    padding: 0;
 }
 
 #e-Letras {

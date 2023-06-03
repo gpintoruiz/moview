@@ -22,21 +22,21 @@ function Guillermo() {
       <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Body className='pb-0'>
           {/* 1era Fila del Modal*/}
-          <Row className='d-flex align-items-center justify-content-center' style={{}}>
+          <Row className='d-flex align-items-center justify-content-center'>
             {/* 1era Columna del Modal (Imagen de Guillermo) */}
             <Col xs={10} sm={4} lg={4} className='imgProgramador d-flex align-items-center justify-content-center' style={{marginright:'3px', marginBottom:'5px'}}> 
               <img src={Guille} alt="imagen de Guillermo" className='ml-3'/>
             </Col>
             {/* 2da Columna del Modal (Informacion Sobre Guillermo) */}
-            <Col xs={12} sm={8} lg={8} className='datosProgramador p-2 d-flex flex-column'> 
+            <Col xs={12} sm={8} lg={8} className='datosProgramador p-4 d-flex flex-column'> 
 
               <h2>Guillermo Pinto Ruiz</h2>
-              <p><b>Titulo:</b> Apasionado de la programación.</p>
+              <p><b>Alias:</b> Apasionado de la programación.</p>
               <p><b>Objetivo:</b> Combinar mis conocimientos técnicos con mi interés en la inteligencia artificial, 
               especialmente en Machine learning y deep learning.</p>
               <p><b>Habilidades:</b> Manejo de Phyton, Java, C++, desarrollo web y bases de datos.</p>
               <p><b>Hobbies:</b> Jugar Voleibol.</p>
-              <p style={{alignSelf:'center'}}><b>Redes sociales</b></p>
+              <p><b>Redes sociales</b></p>
 
               <Col className='list-unstyled text-center m-3' style={{marginTop:'0px'}}>
               {/* Redes Sociales del estudiante (No hubo un consenso de quienes tenian cuales,

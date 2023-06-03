@@ -22,16 +22,16 @@ function Juan() {
       <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Body className='PresentationContainer'>
           {/* 1era Fila del Modal*/}
-        <Row className='d-flex align-items-center justify-content-center' style={{}}>
+        <Row className='d-flex align-items-center justify-content-center'>
           {/* 1era Columna del Modal (Imagen de Juan) */}
           <Col xs={10} sm={4} lg={4} className='imgProgramador d-flex align-items-center justify-content-center' style={{marginright:'3px', marginBottom:'5px'}}> 
             <img src={Roa} alt="imagen de Juan" className='ml-3'/>
           </Col>
           {/* 2da Columna del Modal (Informacion Sobre Juan) */}
-          <Col xs={12} sm={8} lg={8} className='datosProgramador p-5 d-flex flex-column'> 
+          <Col xs={12} sm={8} lg={8} className='datosProgramador p-4 d-flex flex-column'> 
 
             <h3>Juan Diego Roa Porras</h3>
-            <p><b>Titulo:</b> Incursionista del Backend.</p>
+            <p><b>Alias:</b> Incursionista del Backend.</p>
             <p><b>Objetivo:</b> Participar en la creación de nuevos programas en pro de solucionar problemas
             de la vida cotidiana que fueron modelados por medio de la programación.</p>
             <p><b>Habilidades:</b> Manejo basico de Phyton, Java, C++, desarrollo web y bases de datos.</p>

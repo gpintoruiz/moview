@@ -1,6 +1,3 @@
-.imgProgramador {
-    align-items: center;
-}
 
 .imgProgramador img {
     width: 100%; 
@@ -8,16 +5,12 @@
 }
 
 .datosProgramador {
-    border-radius: 10px;
     text-align: center;
 }
 
 .datosProgramador p {
-    /* text-align: justify; */
+    text-align: justify;
     margin: 2px;
     font-size: 1rem;
 }
 
-.datosProgramador h3 {
-    padding-top: 3px;
-}
