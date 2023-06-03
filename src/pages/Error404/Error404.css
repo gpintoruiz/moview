@@ -1,40 +1,38 @@
-.error-container {
-    height: 100vh;
+.e-Container {
+    height: 110vh;
     display: flex;
     flex-direction: column;
     gap: 30px;
     align-items: center;
     justify-content: center;
+    font-family: 'Open Sans', sans-serif;
   }
   
-body{
-    background: rgba(56, 56, 56, 0);
+.e-Container video{
+    width: 45vmax;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    font-family: 'Open Sans', sans-serif;
-}
-img{
-    width: 50%;
 }
 
-h1{
+#e-Letras {
     color: rgb(233, 238, 245);
-    font-size: 20px;
-    padding: 20px;
+    font-size: 2vw;
+    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 
 @media screen and (max-width:630px){
-    h1{        
-        font-size: 16px;        
+    #e-Letras {        
+        font-size: 5vw;        
     }
 }
 
-button{
+.e-button{
     padding: 13px 30px;
     border-radius: 15px;
-    border: none;
+    border: 1px solid red;
     background: rgb(5, 129, 245);
     color: white;
 }

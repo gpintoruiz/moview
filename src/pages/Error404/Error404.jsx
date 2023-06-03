@@ -6,13 +6,13 @@ import {Link} from 'react-router-dom'
 
 const Error404 = () => {
   return (
-    <Container className="error-container">
-       <div class="container">
-        <video>
+    <Container className="e-Container">
+       <div class="e-Container">
+        <video loop={'true'} autoPlay>
           <source src={ErrorGif} type="video/mp4"/>
         </video>
-        <h1 id='Letras'>Parece que te encuentras un poco perdido</h1>
-            <Button variant="outline-dark"><Link to='/' className='text-decoration-none'>Regresar</Link></Button>
+        <h1 id='e-Letras'>Parece que te encuentras un poco perdido</h1>
+        <Button variant="outline-dark"><Link to='/' className='text-decoration-none'>Regresar</Link></Button>
       </div>
     </Container>
   );

@@ -42,3 +42,12 @@
      width: 100% !important; 
      height: 100% !important;
     }
+
+    @media screen and (max-width:630px)
+   {
+      .t-text > h3, .t-text > p {
+         color:rgb(0, 0, 0) !important; 
+         margin: 2px;
+         font-size: 2.2vw;
+      }
+   }
