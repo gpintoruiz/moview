@@ -40,18 +40,17 @@ import { AuthContext } from '../../AuthContext';
     const [email, setEmail] = useState('')
     const [password,setPassword] = useState('')
     const navigate = useNavigate();
+    const [showError, setShowError] = useState(false);
 
     
     const handleLogin = async (event) => {
       event.preventDefault();
     
       if (!isCaptchaVerified) {
-        console.log('Please verify the reCAPTCHA');
         return;
       }
     
       if (email.trim() === '' || password.trim() === '') {
-        console.log('Please fill in all fields');
         return;
       }
     
@@ -61,15 +60,13 @@ import { AuthContext } from '../../AuthContext';
     
       if (email === fakeEmail && password === fakePassword) {
         // Inicio de sesión exitoso
-        console.log('Login successful');
-        // Aquí puedes establecer una variable global o de estado para indicar que el usuario está logueado
-        // Por ejemplo:
-        setIsLoggedIn(true);
+        setIsLoggedIn(true); // Aquí se establece la variable global o de estado para indicar que el usuario está logueado
+        setShowError(false);
         handleClose();
         navigate('/comprobar'); 
       } else {
         // Credenciales incorrectas
-        console.log('Invalid email or password');
+        setShowError(true);
       }
     };
     
@@ -78,10 +75,7 @@ import { AuthContext } from '../../AuthContext';
 
     const [isButtonClicked, setIsButtonClicked] = useState(false);
 
-    const onClick=() => {
-      setIsButtonClicked(true);}
-
-    
+    const onClick=() => {setIsButtonClicked(true);}
 
     return (
       <>
@@ -137,7 +131,7 @@ import { AuthContext } from '../../AuthContext';
 
             {isButtonClicked && !isCaptchaVerified && (<p className="text-danger p-2">Please verify the reCAPTCHA before proceeding.</p>)}
             {isButtonClicked && (email.trim() === '' || password.trim() === '') && (<p className="text-danger p-2">Please fill in all fields.</p>)}
-
+            {showError && (<p className="text-danger p-2">Invalid email or password.</p>)}
 
         </Form>
 
