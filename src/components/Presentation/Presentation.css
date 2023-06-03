@@ -1,20 +1,14 @@
-
 .imgProgramador {
-    margin-right: 10px;
     align-items: center;
 }
 
 .imgProgramador img {
-    width: 100%;
-    align-self: center;
+    width: 100%; 
     border-radius: 10px;
 }
 
 .datosProgramador {
-    border: 1px solid gray;
     border-radius: 10px;
-    padding: 5px;
-    background-color: rgba(161, 176, 189, 0.682);
     text-align: center;
 }
 
@@ -24,7 +18,6 @@
     font-size: 1rem;
 }
 
-.habilidades {
-    width: 100%;
-    float: left;
+.datosProgramador h3 {
+    padding-top: 3px;
 }

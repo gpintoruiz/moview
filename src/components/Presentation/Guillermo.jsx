@@ -19,36 +19,37 @@ function Guillermo() {
 
       <Modal show={show} onHide={handleClose} size="lg" centered>
         <Modal.Body className='PresentationContainer'>
-        <Row>
-        <Col xs={10} sm={4} lg={4} style={{alignContent:'center'}}> 
-        <div className='imgProgramador'>
-          <img src={Guille} alt="imagen de Guillermo" />
-        </div>
-        </Col>
-        <Col xs={12} sm={8} lg={8}> 
-        <div className='datosProgramador'>
-          <h3>Guillermo Pinto Ruiz</h3>
-          <p><b>Titulo:</b> Apasionado de la programacion.</p>
-          <p><b>Objetivo:</b> Combinar mis conocimientos técnicos con mi interés en la inteligencia artificial, 
-            especialmente en Machine learning y deep learning.</p>
-          <p><b>Hobbies:</b> Jugar Voleibol.</p>
-          <p><b>Redes Sociales:</b></p>
-
-          <Col className='list-unstyled text-center m-3' style={{marginTop:'0px'}}>
-          <li className='col'>
-            <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-            <a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-            <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-            <a href="https://www.youtube.com" target="_blank"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-          </li>
+        <Row className='d-flex align-items-center justify-content-center' style={{}}>
+          <Col xs={10} sm={4} lg={4} className='imgProgramador d-flex align-items-center justify-content-center' style={{marginright:'3px', marginBottom:'5px'}}> 
+            <img src={Guille} alt="imagen de Guillermo" className='ml-3'/>
           </Col>
-        </div>
-        </Col>
-        </Row>
 
-        <div className='Habilidades'>
-        </div>
+          <Col xs={12} sm={8} lg={8} className='datosProgramador p-5 d-flex flex-column'> 
+
+            <h3>Guillermo Pinto Ruiz</h3>
+            <p><b>Titulo:</b> Apasionado de la programación.</p>
+            <p><b>Objetivo:</b> Combinar mis conocimientos técnicos con mi interés en la inteligencia artificial, 
+            especialmente en Machine learning y deep learning.</p>
+            <p><b>Habilidades:</b> Manejo de Phyton, Java, C++, desarrollo web y bases de datos.</p>
+            <p><b>Hobbies:</b> Jugar Voleibol.</p>
+            <p><b>Redes Sociales:</b></p>
+
+            <Col className='list-unstyled text-center m-3' style={{marginTop:'0px'}}>
+            <li className='col'>
+              <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+              <a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+              <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+              <a href="https://www.youtube.com" target="_blank"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+            </li>
+            </Col>
+          </Col>
+        </Row>
         </Modal.Body>
+        <Modal.Footer className='align-items-center justify-content-center'>
+          <Button variant="outline-dark" onClick={handleClose}>
+            Done!
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );
