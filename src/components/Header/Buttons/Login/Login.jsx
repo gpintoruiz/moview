@@ -24,6 +24,9 @@ import { AuthContext } from '../../../../AuthContext';
       setShow(false);
       setIsCaptchaVerified(false);
       setIsButtonClicked(false);
+      /* Al cerrar el modal, siempre se va a reiniciar el contenido del email y del password*/
+      setEmail('');
+      setPassword('');
     }
     const handleShow = () => setShow(true);
 
