@@ -1,0 +1,30 @@
+
+.imgProgramador {
+    margin-right: 10px;
+    align-items: center;
+}
+
+.imgProgramador img {
+    width: 100%;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.datosProgramador {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: rgba(161, 176, 189, 0.682);
+    text-align: center;
+}
+
+.datosProgramador p {
+    text-align: justify;
+    margin: 1px;
+    font-size: 1rem;
+}
+
+.habilidades {
+    width: 100%;
+    float: left;
+}
