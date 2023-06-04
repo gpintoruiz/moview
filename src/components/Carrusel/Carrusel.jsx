@@ -45,7 +45,7 @@ function MainCarrusel() {
     return movies.map((movie) => (
       <Carousel.Item key={movie.id}>
         <img 
-          src={`${URL_IMAGE}${movie.poster_path}`} alt="Poster" style={{opacity:'0.2'}}/>
+          src={`${URL_IMAGE}${movie.poster_path}`} alt="Poster" style={{opacity:'0.2', height:'75vw'}}/>
           <Carousel.Caption className="caption text-white">
                 {[1, 2, 3, 4, 5].map((index) => (
                   <img
