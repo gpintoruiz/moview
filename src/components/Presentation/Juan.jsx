@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {Col, Row} from 'react-bootstrap';
-import Roa from '../../img/Roa2.jpg';
+import Roa from '../../img/Roa.jpg';
 import './Presentation.css'
 
 function Juan() {

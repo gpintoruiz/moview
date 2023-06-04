@@ -16,12 +16,10 @@ function MainCarrusel() {
 
   // Declaracion de las variables de estado
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
   const [movie, setMovie] = useState({ titel: 'Loading Movies' });
 
   // Petición a la API
   const fetchMovies = async (searchKey) => {
-    const type = searchKey ? 'search' : 'discover';
     const {
       data: { results },
     } = await axios.get(`${API_URL}/movie/upcoming`, {
@@ -53,6 +51,7 @@ function MainCarrusel() {
                     className="mb-3 m-1 bi bi-star-fill"
                     style={{ width: starSize, color: 'yellow' }}
                     key={index}
+                    alt='Estrella'
                   />
                 ))}
                 <h3>
