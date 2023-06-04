@@ -1,19 +1,18 @@
-#overlay {
+#PS-overlay {
    top: 40vw;
    overflow: hidden;
 }
 
-.card:hover .card-img {
+.card:hover .PS-card-img {
    opacity: 0.2;
 }
 
-.card:hover #overlay {
+.card:hover #PS-overlay {
    top: .5vw;
    transition: all 1.5s;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
+.carousel-control-prev, .carousel-control-next {
   width: 4vw !important;
   height: 4vw;
   margin: auto;
