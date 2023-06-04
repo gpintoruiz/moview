@@ -1,71 +1,112 @@
-import React from 'react'
-import './Carrusel.css'
+import './Carrusel.css';
 import Carousel from 'react-bootstrap/Carousel';
-import estrella from '../../img/estrella.png';
-import clock from '../../img/duration-white.png'
+// import estrella from '../../img/estrella.png';
+// import clock from '../../img/duration-white.png';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+
 
 function MainCarrusel() {
+  // Constantes de estilo
+  const starSize = '2rem';
+
+  // Constantes de la API
+  const API_URL = 'https://api.themoviedb.org/3';
+  const API_KEY = '49149d975d5c0df0a79802f0a64ad893';
+  const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
+
+  // Declaracion de las variables de estado
+  const [movies, setMovies] = useState([]);
+  const [searchKey, setSearchKey] = useState('');
+  const [movie, setMovie] = useState({ titel: 'Loading Movies' });
+
+  // Petición a la API
+  const fetchMovies = async (searchKey) => {
+    const type = searchKey ? 'search' : 'discover';
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/movie/upcoming`, {
+      params: {
+        api_key: API_KEY,
+        query: searchKey,
+        language: 'en-US',
+        page: 1,
+      },
+    });
+
+    setMovies(results);
+    setMovie(results[0]);
+  };
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
+  const renderSlides = () => {
+    return movies.map((movie) => (
+      <Carousel.Item key={movie.id}>
+        <Row>
+          <Card style={{ background: 'none', width:'100%' }} >
+            <Card.Img
+              src={`${URL_IMAGE}${movie.poster_path}`}
+              alt="Card image"
+            />
+            <Card.ImgOverlay id="overlay">
+              <Card.Text className="text-white">
+                {[1, 2, 3, 4, 5].map((index) => (
+                  <img
+                    className="mb-3 m-1 bi bi-star-fill"
+                    style={{ width: starSize, color: 'yellow' }}
+                    key={index}
+                  />
+                ))}
+                <h3>
+                  <b>{movie.title}</b>
+                </h3>
+                <p>
+                  <b>{movie.release_date}</b>
+                </p>
+                <p>
+                  <b>{movie.genre_ids}</b>
+                </p>
+              </Card.Text>
+            </Card.ImgOverlay>
+          </Card>
+        </Row>
+      </Carousel.Item>
+    ));
+  };
+
   return (
-      <Carousel id="Carousel">
-        {/* Creacion Del 1er "slide" del carrusel */}
-        <Carousel.Item >
-        {/* Imagen de fondo */}
-        <img id="poster1"src="https://lumiere-a.akamaihd.net/v1/images/p_cruella_21672_ba40c762.jpeg?region=0%2C0%2C540%2C810" alt="Cruella"/>
-          {/* El caption del carrusel que contiene todo el texto que se muestra en el slide */}
-          <Carousel.Caption className="caption">
-          <h2 id="titulo-poster1">Cruella</h2>
-                  <div id="puntuacion-poster1"/>
-                      <img id="pos1-estrella1" className="estrella" src={estrella} alt="Estrella"/>
-                      <img id="pos1-estrella2" className="estrella" src={estrella} alt="Estrella"/>
-                      <img id="pos1-estrella3" className="estrella" src={estrella} alt="Estrella"/>
-                      <img id="pos1-estrella4" className="estrella" src={estrella} alt="Estrella"/>
-                      <img id="pos1-estrella5" className="estrella" src={estrella} alt="Estrella"/>
-                  <p id="generos-poster1">Genres: Adventure, Comedy, Crime</p>
-                  <p id="duracion-poster1" className="duracion"><img src={clock} alt="clock"/> Duracion: 134 minutos </p>
-                  <p id="sinopsis-poster1">Plot: A live-action prequel feature film following a young Cruella de Vil and how she was 'raised'.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        {/* Creacion Del 2do "slide" del carrusel */}
-        <Carousel.Item>
-          {/* Imagen de fondo */}
-          <img  id="poster2" src="https://i.ebayimg.com/images/g/4gcAAOSwxPJhyxYq/s-l1600.jpg" alt="SpaceJam2"/>
-          {/* El caption del carrusel que contiene todo el texto que se muestra en el slide */}
-          <Carousel.Caption className="caption">
-            <h2 id="titulo-poster2">Space Jam 2</h2>
-            <img id="pos2-estrella1" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos2-estrella2" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos2-estrella3" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos2-estrella4" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos2-estrella5" className="estrella" src={estrella} alt="Estrella"/>
-            <p id="generos-poster2">Genres: Short, Comedy, Sport</p>
-            <p id="duracion-poster2" className="duracion"><img src={clock} alt="clock"/> Duracion: 115 minutos </p>
-            <p id="sinopsis-poster2">Plot: La superestrella del baloncesto LeBron James se une a la banda de los Looney Tunes para derrotar al Goon Squad y salvar a su hijo.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-
-        {/* Creacion Del 3er "slide" del carrusel */}
-        <Carousel.Item>
-        {/* Imagen de fondo del Slide */}
-        <img id="poster3" src="https://palomaynacho.com/wp-content/uploads/2023/04/guardianes-de-la-galaxia-vol-3-poster-2-imax.jpg" alt="SpaceJam2"/>
-          {/* El caption del carrusel que contiene todo el texto que se muestra en el slide */}
-          <Carousel.Caption className="caption">
-            <h2 id="titulo-poster3">Guardianes de la galaxia vol 3</h2>
-            <img id="pos3-estrella1" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos3-estrella2" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos3-estrella3" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos3-estrella4" className="estrella" src={estrella} alt="Estrella"/>
-            <img id="pos3-estrella5" className="estrella" src={estrella} alt="Estrella"/>
-            <p id="generos-poster3">Genres: Adventure, Sci-fi, Action, Superheroes, Fantasy</p>
-            <p id="duracion-poster3" className="duracion"><img src={clock} alt="clock"/> Duracion: 144 minutos</p>
-            <p id="sinopsis-poster3">Plot: Los Guardianes de la Galaxia se están adaptando a la vida en Knowhere cuando partes del pasado de Rocket resurgen. 
-            Para protegerlo, Peter Quill debe liderar a los Guardianes en una peligrosa misión que podría conducir a la disolución del equipo actual.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-      /* Nota, El carrusel tiene tantos ids diferentes, porque se espera que al implementar la base de 
-      datos y el backend cosas como el titulo, la puntuacion (cantidad de estrellas), los generos, la 
-      duracion y la sinopsis de cada pelicula se actualize automaticamente */
+    <Carousel
+      indicators={false}
+      prevIcon={
+        <span
+          className="bi bi-caret-left-fill carousel-control-prev"
+          style={{
+            color: 'white',
+            background: 'none',
+            border: 'none',
+            fontSize: '4vw',
+          }}
+        />
+      }
+      nextIcon={
+        <span
+          className="bi bi-caret-right-fill carousel-control-next"
+          style={{
+            color: 'white',
+            background: 'none',
+            border: 'none',
+            fontSize: '4vw',
+          }}
+        />
+      }
+    >
+      {renderSlides()}
+    </Carousel>
   );
 }
 

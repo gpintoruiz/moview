@@ -1,17 +1,15 @@
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import star from '../../img/estrella.png'
 import './InTheater.css'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import { Button } from 'react-bootstrap';
 
 function InTheater() {
 
     // Constantes de estilo
 
-    const starSize = '30px';
+    const starSize = '2rem';
 
     //Constantes de la API
 
@@ -25,6 +23,8 @@ function InTheater() {
     const [movies,setMovies] = useState([]);
     const [searchKey, setSearchKey] = useState("");
     const [movie,setMovie] = useState({titel:"Loading Movies"});
+
+    //Petición a la API
 
     const fetchMovies = async(searchKey) =>{
         const type = searchKey ? "search" : "discover"
@@ -45,6 +45,8 @@ function InTheater() {
     },[])
 
 
+    //Código para el renderizado de 4 slides con 5 peliculas
+
     const renderSlides = () => {
       const groupSize = 5;
       const groups = movies.reduce((acc, movie, index) => {
@@ -58,29 +60,18 @@ function InTheater() {
 
       return groups.map((group, index) => (
         <Carousel.Item key={index}>
-          <Row xs={5} md={5} lg={5} className="m-2">
+          <Row xs={5} md={5} lg={5} className="m-3">
             {group.map((movie) => (
-              <Card className="card" key={movie.id} style={{background:'none'}}>
-                <Card.Img
-                  id="it-card1-img"
-                  className="card-img"
-                  src={`${URL_IMAGE}${movie.poster_path}`}
-                  alt="Card image"
-                />
+              <Card key={movie.id} style={{background:'none'}}>
+                <Card.Img src={`${URL_IMAGE}${movie.poster_path}`}/>
                 <Card.ImgOverlay id="overlay">
                   <Card.Text className="text-white m-1">
 
-                  {[1, 2, 3, 4, 5].map((index) => (<img src={star} alt="star" className='mb-3 m-1' style={{ width: starSize }} key={index}/>))}
+                  {[1, 2, 3, 4, 5].map((index) => (<img className='mb-3 m-1 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
 
-                    <h3 id="it-card1-title">
-                      <b>{movie.title}</b>
-                    </h3>
-                    <p id="it-card1-year">
-                      <b>2021</b>
-                    </p>
-                    <p id="it-card1-Genres">
-                      <b>Genres: Drama, Comedy, Adventure</b>
-                    </p>
+                    <h3>{movie.title}</h3>
+                    <p>{movie.release_date}</p>
+                    <p>{movie.genre_ids}</p>
                   </Card.Text>
                 </Card.ImgOverlay>
               </Card>

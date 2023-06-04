@@ -9,9 +9,9 @@ function Index() {
   return (
     <>
       <MainCarrusel />
-      <h2 id="inTheater">In Theater:</h2> 
+      <h3 className='h1 text-white m-4'>En cines</h3> 
       <Theater />
-      <h2 id="Trending">Trending Movies:</h2> 
+      <h3 className='h1 text-white m-4'>En tendencia</h3> 
       <Trending />
     </>
   )
