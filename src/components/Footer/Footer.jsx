@@ -36,10 +36,10 @@ function Footer() {
           <p className='h4'>Social Networks</p>
           {/* Como es una empresa ficticia que no tiene redes sociales reales, los hiperenlaces son por defecto */}
           <li className='col'>
-            <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
-            <a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
-            <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
-            <a href="https://www.youtube.com" target="_blank"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://twitter.com/?lang=es" target="_blank" rel="noreferrer"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
+            <a href="https://www.youtube.com" target="_blank" rel="noreferrer"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'white'}}></i></a >
           </li>
         </Col>
       </Row>

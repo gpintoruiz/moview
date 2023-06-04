@@ -42,10 +42,10 @@ function Guillermo() {
               {/* Redes Sociales del estudiante (No hubo un consenso de quienes tenian cuales,
                 por lo que los enlaces terminaron siendo por defecto) */}
               <li className='col'>
-                <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-                <a href="https://twitter.com/?lang=es" target="_blank"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-                <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
-                <a href="https://www.youtube.com" target="_blank"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+                <a href="https://www.facebook.com" target="_blank" rel="noreferrer"><i class="bi bi-facebook m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+                <a href="https://twitter.com/?lang=es" target="_blank" rel="noreferrer"><i class="bi bi-twitter m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+                <a href="https://www.instagram.com" target="_blank" rel="noreferrer"><i class="bi bi-instagram m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
+                <a href="https://www.youtube.com" target="_blank" rel="noreferrer"><i class="bi bi-youtube m-2" style={{fontSize:'1.5rem', color:'black'}}></i></a >
               </li>
               </Col>
             </Col>

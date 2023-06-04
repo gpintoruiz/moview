@@ -1,128 +1,100 @@
 import Carousel from 'react-bootstrap/Carousel';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 import star from '../../img/estrella.png'
 import './InTheater.css'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-function inTheater() {
-  return (
-    <Carousel fade>
-      {/* Codigo del 1er slide del carrusel */}
-      <Carousel.Item>
-      {/* Codigo de la fila que siempre va a tener 3 cards sin importar el viewport */}
-      <Row xs={4} md={4} className="g-4">
-          {/* 1era Card De la fila */}
-          <Card className="card">
-          <Card.Img id="it-card1-img" className='card-img' src='https://cloudfront-us-east-1.images.arcpublishing.com/eluniverso/IRN2ZUZFANAXVNKJZL62RNJEB4.jpg' alt="Card image" />
-          <Card.ImgOverlay id="overlay">
-            <Card.Text className='text'>
-             <img src={star} alt="star" className='star' id="it-card1-star1"></img>
-             <img src={star} alt="star" className='star' id="it-card1-star2"></img>
-             <img src={star} alt="star" className='star' id="it-card1-star3"></img>
-             <img src={star} alt="star" className='star' id="it-card1-star4"></img>
-             <img src={star} alt="star" className='star' id="it-card1-star5"></img>
-             <h3 id="it-card1-title"><b>Cruella</b></h3>
-             <p id="it-card1-year"><b>2021</b></p>
-             <p id="it-card1-Genres"><b>Genres: Drama, Comedy, Adventure</b></p>
-            </Card.Text>
-          </Card.ImgOverlay>
-          </Card>
+import { Button } from 'react-bootstrap';
 
-          {/* Segunda Card de la fila */}
-          <Card className="card">
-          <Card.Img id="it-card2-img"  className='card-img' src='https://www.alohacriticon.com/wp-content/uploads/2023/05/guardianes-galaxia-volumen-3-poster-sinopsis-2023.jpg' alt="Card image" />
-          <Card.ImgOverlay id="overlay">
-            <Card.Text className='text'>
-            <img src={star} alt="star" className='star'  id="it-card2-star1"></img>
-             <img src={star} alt="star" className='star' id="it-card2-star2"></img>
-             <img src={star} alt="star" className='star' id="it-card2-star3"></img>
-             <img src={star} alt="star" className='star' id="it-card2-star4"></img>
-             <img src={star} alt="star" className='star' id="it-card2-star5"></img>
-             <h3 id="it-card2-title"><b>Cruella</b></h3>
-             <p id="it-card2-year"><b>2021</b></p>
-             <p id="it-card2-Genres"><b>Genres: Drama, Comedy, Adventure</b></p>
-            </Card.Text>
-          </Card.ImgOverlay>
-          </Card>
+function InTheater() {
 
-          {/* 3era Card de la fila  */}
-          <Card className="card">
-          <Card.Img id="it-card3-img"  className='card-img' src='https://image.tmdb.org/t/p/original/tnPGFoeQpLznLplytqPjmvRIJ2F.jpg' alt="Card image" />
-          <Card.ImgOverlay id="overlay">
-            <Card.Text className='text'>
-            <img src={star} alt="star" className='star'  id="it-card3-star1"></img>
-             <img src={star} alt="star" className='star' id="it-card3-star2"></img>
-             <img src={star} alt="star" className='star' id="it-card3-star3"></img>
-             <img src={star} alt="star" className='star' id="it-card3-star4"></img>
-             <img src={star} alt="star" className='star' id="it-card3-star5"></img>
-             <h3 id="it-card3-title"><b>Cruella</b></h3>
-             <p id="it-card3-year"><b>2021</b></p>
-             <p id="it-card3-Genres"><b>Genres: Drama, Comedy, Adventure</b></p>
-            </Card.Text>
-          </Card.ImgOverlay>
-          </Card>
-      </Row>
-      </Carousel.Item>
+    // Constantes de estilo
 
-      {/* Codigo del 2do slide del carrusel */}
-      <Carousel.Item>
-      <Row xs={4} md={4} className="g-4">
-          {/* 1era Card */}
-          <Card className="card">
-          <Card.Img id="it-card1-img" className='card-img' src='https://image.tmdb.org/t/p/original/4SMqo8Me8aCT4KAVLeG9pk8VYiN.jpg' alt="Card image" />
-          <Card.ImgOverlay id="overlay">
-            <Card.Text className='text'>
-             <img src={star} alt="star" className='star' id="it-card4-star1"></img>
-             <img src={star} alt="star" className='star' id="it-card4-star2"></img>
-             <img src={star} alt="star" className='star' id="it-card4-star3"></img>
-             <img src={star} alt="star" className='star' id="it-card4-star4"></img>
-             <img src={star} alt="star" className='star' id="it-card4-star5"></img>
-             <h3 id="it-card1-title"><b>Cruella</b></h3>
-             <p id="it-card4-year"><b>2021</b></p>
-             <p id="it-card4-Genres"><b>Genres: Drama, Comedy, Adventure</b></p>
-            </Card.Text>
-          </Card.ImgOverlay>
-          </Card>
+    const starSize = '30px';
 
-          {/* 2da Card */}
-          <Card className="card">
-          <Card.Img id="it-card5-img" className="card-img" src='https://cartelerasdecine.info/wp-content/uploads/2022/04/La-Ciudad-Perdida-The-Lost-City-Pelicula-Cartelera-Cine.jpg' alt="Card image" />
-          <Card.ImgOverlay id="overlay">
-            <Card.Text className='text'>
-            <img src={star} alt="star" className='star'  id="it-card5-star1"></img>
-             <img src={star} alt="star" className='star' id="it-card5-star2"></img>
-             <img src={star} alt="star" className='star' id="it-card5-star3"></img>
-             <img src={star} alt="star" className='star' id="it-card5-star4"></img>
-             <img src={star} alt="star" className='star' id="it-card5-star5"></img>
-             <h3 id="it-card5-title"><b>Cruella</b></h3>
-             <p id="it-card5-year"><b>2021</b></p>
-             <p id="it-card5-Genres"><b>Genres: Drama, Comedy, Adventure</b></p>
-            </Card.Text>
-          </Card.ImgOverlay>
-          </Card>
+    //Constantes de la API
 
-          {/* 3ra Card */}
-          <Card className="card">
-          <Card.Img id="it-card6-img" className="card-img" src='https://www.ecartelera.com/carteles/6800/6851/001_p.jpg' alt="Card image" />
-          <Card.ImgOverlay id="overlay">
-            <Card.Text className='text'>
-            <img src={star} alt="star" className='star'  id="it-card6-star1"></img>
-             <img src={star} alt="star" className='star' id="it-card6-star2"></img>
-             <img src={star} alt="star" className='star' id="it-card6-star3"></img>
-             <img src={star} alt="star" className='star' id="it-card6-star4"></img>
-             <img src={star} alt="star" className='star' id="it-card6-star5"></img>
-             <h3 id="it-card6-title"><b>Cruella</b></h3>
-             <p id="it-card6-year"><b>2021</b></p>
-             <p id="it-card6-Genres"><b>Genres: Drama, Comedy, Adventure</b></p>
-            </Card.Text>
-          </Card.ImgOverlay>
-          </Card>
-          
-      </Row>
-      </Carousel.Item>
-    </Carousel>
-    /*Al igual que con los otros carruseles, los ids van a ser utilizados en el backend, de modo que
-    se actualizen automaticamente los datos de las peliculas desde la base de datos. */
-  );
+    const API_URL = 'https://api.themoviedb.org/3'
+    const API_KEY='49149d975d5c0df0a79802f0a64ad893'
+    const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
+    const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
+
+    // Declaracion de las variables de estado
+
+    const [movies,setMovies] = useState([]);
+    const [searchKey, setSearchKey] = useState("");
+    const [movie,setMovie] = useState({titel:"Loading Movies"});
+
+    const fetchMovies = async(searchKey) =>{
+        const type = searchKey ? "search" : "discover"
+        const {data:{results},
+        } = await axios.get(`${API_URL}/${type}/movie` , {
+            params : {
+                api_key: API_KEY,
+                query: searchKey,
+            },
+        });
+
+        setMovies(results)
+        setMovie(results[0])
+    }
+
+    useEffect(()=>{
+        fetchMovies();
+    },[])
+
+
+    const renderSlides = () => {
+      const groupSize = 5;
+      const groups = movies.reduce((acc, movie, index) => {
+        const groupIndex = Math.floor(index / groupSize);
+        if (!acc[groupIndex]) {
+          acc[groupIndex] = [];
+        }
+        acc[groupIndex].push(movie);
+        return acc;
+      }, []);
+
+      return groups.map((group, index) => (
+        <Carousel.Item key={index}>
+          <Row xs={5} md={5} lg={5} className="m-2">
+            {group.map((movie) => (
+              <Card className="card" key={movie.id} style={{background:'none'}}>
+                <Card.Img
+                  id="it-card1-img"
+                  className="card-img"
+                  src={`${URL_IMAGE}${movie.poster_path}`}
+                  alt="Card image"
+                />
+                <Card.ImgOverlay id="overlay">
+                  <Card.Text className="text-white m-1">
+
+                  {[1, 2, 3, 4, 5].map((index) => (<img src={star} alt="star" className='mb-3 m-1' style={{ width: starSize }} key={index}/>))}
+
+                    <h3 id="it-card1-title">
+                      <b>{movie.title}</b>
+                    </h3>
+                    <p id="it-card1-year">
+                      <b>2021</b>
+                    </p>
+                    <p id="it-card1-Genres">
+                      <b>Genres: Drama, Comedy, Adventure</b>
+                    </p>
+                  </Card.Text>
+                </Card.ImgOverlay>
+              </Card>
+            ))}
+          </Row>
+        </Carousel.Item>
+      ));
+    };
+
+    return <Carousel indicators={false} fade prevIcon={<span className='bi bi-caret-left-fill carousel-control-prev' style={{color:'white', background:'none', border:'none', fontSize:'4vw'}}/>} nextIcon={<span className='bi bi-caret-right-fill carousel-control-next' style={{color:'white', background:'none', border:'none', fontSize:'4vw'}}/>}> 
+
+      {renderSlides()}
+
+      </Carousel>;
 }
 
-export default inTheater;
+export default InTheater;
