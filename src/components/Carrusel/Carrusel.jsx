@@ -1,12 +1,8 @@
 import './Carrusel.css';
 import Carousel from 'react-bootstrap/Carousel';
-// import estrella from '../../img/estrella.png';
-// import clock from '../../img/duration-white.png';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import star from '../../img/estrella.png'
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
 
 
 function MainCarrusel() {
@@ -49,8 +45,7 @@ function MainCarrusel() {
     return movies.map((movie) => (
       <Carousel.Item key={movie.id}>
         <img 
-          id="C-poster"
-          src={`${URL_IMAGE}${movie.poster_path}`} alt="Poster"/>
+          src={`${URL_IMAGE}${movie.poster_path}`} alt="Poster" style={{opacity:'0.2'}}/>
           <Carousel.Caption className="caption text-white">
                 {[1, 2, 3, 4, 5].map((index) => (
                   <img
@@ -76,7 +71,7 @@ function MainCarrusel() {
   };
 
   return (
-    <Carousel id='Carousel'
+    <Carousel
       indicators={false}
       prevIcon={
         <span
