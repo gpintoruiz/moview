@@ -1,52 +1,20 @@
-   .g-4 {
-   justify-content: center;
-   margin-top: 15px;
-   margin-bottom: 15px;
-   }
-   .card {
-    height: 40vw !important;
-    padding: 0px !important;
-    margin-left:10px;
-    margin-right:10px;
-    border: 0px !important;
-   }
-  
-   .star{
-    display: inline;
-    margin-bottom: 1px;
-    width: 3vw;
-   }
-  
-   .text > h3, .text > p {
-    color:rgb(0, 0, 0) !important; 
-    margin: 2px;
-    font-size: 1.8vw;
-   }
+#overlay {
+   top: 40vw;
+   overflow: hidden;
+}
 
-   #overlay {
-    top: 40vw;
-    overflow: hidden;
-   }
-  
-   .card:hover .card-img {
-      opacity:0.2;
-   } 
-  
-   .card:hover #overlay{
-    top: .5vw;
-    transition: all 1.5s;
-   }
+.card:hover .card-img {
+   opacity: 0.2;
+}
 
-  .card-img {
-    width: 100% !important; 
-    height: 100% !important;
-   }
+.card:hover #overlay {
+   top: 10vw;
+   transition: all 1.5s;
+}
 
-   @media screen and (max-width:630px)
-   {
-      .text > h3, .text > p {
-      color:rgb(0, 0, 0) !important; 
-      margin: 2px;
-      font-size: 2vw;
-      }
-   }
+.carousel-control-prev,
+.carousel-control-next {
+  width: 4vw !important;
+  height: 4vw;
+  margin: auto;
+}

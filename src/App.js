@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Error from "./pages/Error404/Error404"
 import Comprobar from "./pages/Comprobar";
 import { AuthProvider } from './AuthContext';
+import Detalle from "./components/DetallePelicula/DetallePelicula";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/help" element={<Help />} />
           <Route path="*" element={<Error />} />
           <Route path='/comprobar' element={<Comprobar />} />
+          <Route path="/detalle" element={<Detalle/>}/>
         </Routes>
         <Footer />
       </Router>
