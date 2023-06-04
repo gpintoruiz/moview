@@ -6,6 +6,8 @@ import Metta from '../../img/Metacritic.png'
 import imdb from '../../img/IMDB.png'
 import Related from '../../components/Related/Related';
 import Trailer from '../../components/Trailer/Trailer'
+import Reseña from '../../components/DetallePelicula/Reseña';
+import { Link, useNavigate } from 'react-router-dom';
 
 function detallePelicula() {
 return (
@@ -81,7 +83,29 @@ return (
 
     {/* Div que contiene el componente que genera las reseñas */}
     <div>
-        <h2 style={{margin:'8px', color:'white'}}> Reseñas:</h2>
+        {/* link que lleva a la pagina de reseñas Completas */}
+        {/* No se alcanzo a Implementar esa pagina por lo que lleva a la pagina de error */}
+        <Link style={{textDecoration:'none'}} to="*"><h2 style={{color:'white', marginLeft:'10px'}}> Reseñas:</h2></Link>
+        
+        {/* 1era fila que contiene 2 reseñas incompletas */}
+        <Row className='d-flex ' style={{margin:'0px'}}>
+            <Col xs={12} sm={6} lg={6} className='DP-informacion d-flex flex-column mb-3'>
+                <Reseña />
+            </Col>
+            <Col xs={12} sm={6} lg={6} className='DP-informacion d-flex flex-column mb-3'>
+                <Reseña />
+            </Col>
+        </Row>
+        
+        {/* 2da fila que contiene 2 reseñas incompletas */}
+        <Row className='d-flex' style={{margin:'0px'}}>
+            <Col xs={12} sm={6} lg={6} className='DP-informacion d-flex flex-column mb-3'>
+                <Reseña />
+            </Col>
+            <Col xs={12} sm={6} lg={6} className='DP-informacion d-flex flex-column mb-3'>
+                <Reseña />
+            </Col>
+        </Row>  
     </div>
     </>
     );

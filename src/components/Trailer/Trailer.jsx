@@ -22,7 +22,7 @@ function Trailer() {
                 width:'100%',
                 height: '75vh',
                 }}
-                allow="accelerometer; autoplay;clipboard-write; encrypted-media; gyroscope; 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
                 picture-in-picture; web-share" 
                 allowfullscreen
             ></iframe>
