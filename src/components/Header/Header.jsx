@@ -39,10 +39,10 @@ function NavHeader() {
           <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
             {/* Codigo del formulario usado para buscar una pelicula especifica */}
             <Buscador/>
-            <Link to="/"><Button variant="outline-secondary" className="me-4" style={{ border: 'none', color: 'white' }}>Home</Button></Link>
-            <Link to="/help"><Button variant="outline-secondary" className="me-4" style={{ border: 'none', color: 'white' }}>Help</Button></Link>
+            <Link to="/"  className="me-2 ms-2 text-center"><Button variant="outline-secondary"  style={{ border: 'none', color: 'white' }}>Home</Button></Link>
+            <Link to="/help" className="me-2 ms-2 text-center"><Button variant="outline-secondary"   style={{ border: 'none', color: 'white' }}>Help</Button></Link>
             {/* Mostrar Logout en lugar de Login cuando el usuario está autenticado */}
-            {isLoggedIn ? (<Button variant="outline-secondary" className="me-4" style={{ border: 'none', color: 'white' }} onClick={handleLogout}>Logout</Button>) 
+            {isLoggedIn ? (<Button variant="outline-secondary" className='m-1' style={{ border: 'none', color: 'white' }} onClick={handleLogout}>Logout</Button>) 
             
             : 
 

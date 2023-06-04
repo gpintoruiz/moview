@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import './Buscador.css'
 
 
 function Buscador() {
@@ -49,11 +50,12 @@ function Buscador() {
   return (
     <Form className="d-flex" onSubmit={searchMovies}>
       <Form.Control
-        type="search"
+        type="text"
         placeholder="Search"
-        className="me-2"
-        aria-label="Search"
+        className="me-2 ms-2 buscador"
+        aria-label="Search" 
         onChange={(e)=>setSearchKey(e.target.value)}
+        style={{width:'40vw'}}
       />
       <Button
         className="bi bi-search"

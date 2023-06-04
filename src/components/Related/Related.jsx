@@ -1,17 +1,16 @@
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import star from '../../img/estrella.png'
 import './Related.css'
 import Card from 'react-bootstrap/Card';
+import star from '../../img/estrella.png'
 import Row from 'react-bootstrap/Row';
-import { Button } from 'react-bootstrap';
 
-function PeliculasSimilares() {
+function Related() {
 
     // Constantes de estilo
 
-    const starSize = '2.4vw';
+    const starSize = '2vw';
 
     //Constantes de la API
 
@@ -25,6 +24,10 @@ function PeliculasSimilares() {
     const [movies,setMovies] = useState([]);
     const [searchKey, setSearchKey] = useState("");
     const [movie,setMovie] = useState({titel:"Loading Movies"});
+    const [groupSize, setGroupSize] = useState(5); // Valor inicial
+
+
+    //Petición a la API
 
     const fetchMovies = async(searchKey) =>{
         const type = searchKey ? "search" : "discover"
@@ -44,26 +47,42 @@ function PeliculasSimilares() {
         fetchMovies();
     },[])
 
+    useEffect(() => {
+      fetchMovies();
+      window.addEventListener('resize', handleResize); // Agregar el evento resize al montar el componente
+      return () => {
+        window.removeEventListener('resize', handleResize); // Eliminar el evento resize al desmontar el componente
+      }
+    }, [])
+  
+    // Función para manejar el cambio de tamaño de viewport
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setGroupSize(3);
+      } else {
+        setGroupSize(5);
+      }
+    };
 
-    const renderSlides = () => {
-      const groupSize = 5;
-      const groups = movies.reduce((acc, movie, index) => {
-        const groupIndex = Math.floor(index / groupSize);
-        if (!acc[groupIndex]) {
-          acc[groupIndex] = [];
-        }
-        acc[groupIndex].push(movie);
-        return acc;
-      }, []);
+    // Código para el renderizado de los slides
+  const renderSlides = () => {
+    const groups = movies.reduce((acc, movie, index) => {
+      const groupIndex = Math.floor(index / groupSize);
+      if (!acc[groupIndex]) {
+        acc[groupIndex] = [];
+      }
+      acc[groupIndex].push(movie);
+      return acc;
+    }, []);
 
       return groups.map((group, index) => (
         <Carousel.Item key={index}>
-          <Row xs={3} md={5} lg={5} className="m-3 align-items-center justify-content-center">
+          <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
             {group.map((movie) => (
               <Card key={movie.id} style={{background:'none'}}>
                 <Card.Img src={`${URL_IMAGE}${movie.poster_path}`}/>
-                <Card.ImgOverlay id="R-overlay">
-                  <Card.Text className="text-white m-1 R-text">
+                <Card.ImgOverlay id="overlay">
+                  <Card.Text className="text-white m-1 text">
                   {[1, 2, 3, 4, 5].map((index) => (<img src={star} className='star mb-3 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
                     <h3>{movie.title}</h3>
                     <p><b>{movie.release_date}</b></p>
@@ -81,7 +100,8 @@ function PeliculasSimilares() {
 
       {renderSlides()}
 
-      </Carousel>;
+    </Carousel>;
+    
 }
 
-export default PeliculasSimilares;
+export default Related;

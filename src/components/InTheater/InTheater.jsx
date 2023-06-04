@@ -24,6 +24,8 @@ function InTheater() {
     const [movies,setMovies] = useState([]);
     const [searchKey, setSearchKey] = useState("");
     const [movie,setMovie] = useState({titel:"Loading Movies"});
+    const [groupSize, setGroupSize] = useState(5); // Valor inicial
+
 
     //Petición a la API
 
@@ -45,19 +47,33 @@ function InTheater() {
         fetchMovies();
     },[])
 
+    useEffect(() => {
+      fetchMovies();
+      window.addEventListener('resize', handleResize); // Agregar el evento resize al montar el componente
+      return () => {
+        window.removeEventListener('resize', handleResize); // Eliminar el evento resize al desmontar el componente
+      }
+    }, [])
+  
+    // Función para manejar el cambio de tamaño de viewport
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setGroupSize(3);
+      } else {
+        setGroupSize(5);
+      }
+    };
 
-    //Código para el renderizado de 4 slides con 5 peliculas
-
-    const renderSlides = () => {
-      const groupSize = 5;
-      const groups = movies.reduce((acc, movie, index) => {
-        const groupIndex = Math.floor(index / groupSize);
-        if (!acc[groupIndex]) {
-          acc[groupIndex] = [];
-        }
-        acc[groupIndex].push(movie);
-        return acc;
-      }, []);
+    // Código para el renderizado de los slides
+  const renderSlides = () => {
+    const groups = movies.reduce((acc, movie, index) => {
+      const groupIndex = Math.floor(index / groupSize);
+      if (!acc[groupIndex]) {
+        acc[groupIndex] = [];
+      }
+      acc[groupIndex].push(movie);
+      return acc;
+    }, []);
 
       return groups.map((group, index) => (
         <Carousel.Item key={index}>

@@ -69,6 +69,7 @@ function MainCarrusel() {
                 <p>
                   <b>Generos: {movie.genre_ids}</b>
                 </p>
+                <p>{movie.overview}</p>
           </Carousel.Caption>
       </Carousel.Item>
     ));
