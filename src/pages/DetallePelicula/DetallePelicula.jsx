@@ -4,25 +4,32 @@ import {Col, Row} from 'react-bootstrap';
 import rottenT from '../../img/rottenTomatoes.png'
 import Metta from '../../img/Metacritic.png'
 import imdb from '../../img/IMDB.png'
-import InTheater from '../../components/InTheater/InTheater';
+import PeliculasSimilares from '../../components/DetallePelicula/PeliculasSimilares';
+import Trailer from '../../components/DetallePelicula/Trailer';
 
 function detallePelicula() {
 return (
     <>
+    {/* Div que contiene toda la descripcion basica de la pelicula */}
     <div className='DP-container d-flex'>
+        {/* Fila "principal" que divide el div en 2 columnas */}
         <Row className='d-flex align-items-center justify-content-center' style={{margin:'0px'}}>
+            {/* Columna del poster de la pelicula */}
             <Col xs={10} sm={4} lg={4} className='DP-poster d-flex align-items-center justify-content-center'> 
-            <img id="DP-poster"src='https://image.tmdb.org/t/p/original/4SMqo8Me8aCT4KAVLeG9pk8VYiN.jpg' alt="Poster Pelicula"/>
+                <Trailer />
             </Col>
 
+            {/* Columna con la informacion de la pelicula */}
             <Col xs={11} sm={8} lg={8} className='DP-informacion d-flex flex-column'>
+                {/* Fila que contiene titulo, clasificacion, publicacion, genero principal y duracion */}
                 <Row className='d-flex justify-content-left' style={{margin:'0px'}}>
                     <Col xs={12} sm={12} lg={12} className='DP-informacion d-flex flex-column text-center'>
                         <h2 style={{marginTop:'5px'}}> <b>Scary movie 4</b> (2006) </h2>   
                         <p>PG-13 - 14/4/2006 (US) - comedia - 1h 29m </p>
                     </Col>      
                 </Row>
-
+                
+                {/* Fila que contiene las calificaciones segun RottenTomatoes, IMDB y Metacritics */}
                 <Row className='d-flex ' style={{margin:'0px'}}>
                     <Col xs={4} sm={3.5} lg={3.5} className='DP-informacion d-flex flex-column text-center'>  
                         <img src={rottenT} style={{width:'60px', alignSelf:'center'}} alt="RottenTomatoes Icon"/>
@@ -39,13 +46,15 @@ return (
                         <p>Puntuacion de Imdb: <b>5.1/10</b> </p>
                     </Col> 
                 </Row>
-
+                
+                {/* Fila que contiene una frase caracteristica sobre la pelicula */}
                 <Row className='d-flex ' style={{margin:'0px'}}>
                     <Col xs={12} sm={12} lg={12} className='DP-informacion d-flex flex-column text-center'>
                     <em>"El cuarto y último capítulo de la trilogía"</em>
                     </Col>
                 </Row>
 
+                {/* Fila que contiene la sinopsis de la pelicula */}
                 <Row className='d-flex ' style={{margin:'0px'}}>
                     <Col xs={12} sm={11} lg={11} className='DP-informacion d-flex flex-column text-justify'>
                     <h4>Sinopsis: </h4>
@@ -63,9 +72,16 @@ return (
             </Col>
         </Row>
     </div>   
+
+    {/* Div que contiene la llamada al componente que genera el carrusel de peliculas similares */}
     <div>
         <h2 style={{margin:'8px', color:'white'}}>Peliculas similares:</h2>
-        <InTheater/>
+        <PeliculasSimilares/>
+    </div>
+
+    {/* Div que contiene el componente que genera las reseñas */}
+    <div>
+        <h2 style={{margin:'8px', color:'white'}}> Reseñas:</h2>
     </div>
     </>
     );
