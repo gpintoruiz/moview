@@ -4,9 +4,11 @@ import {Col, Row} from 'react-bootstrap';
 import rottenT from '../../img/rottenTomatoes.png'
 import Metta from '../../img/Metacritic.png'
 import imdb from '../../img/IMDB.png'
+import InTheater from '../../components/InTheater/InTheater';
 
 function detallePelicula() {
 return (
+    <>
     <div className='DP-container d-flex'>
         <Row className='d-flex align-items-center justify-content-center' style={{margin:'0px'}}>
             <Col xs={10} sm={4} lg={4} className='DP-poster d-flex align-items-center justify-content-center'> 
@@ -61,6 +63,11 @@ return (
             </Col>
         </Row>
     </div>   
+    <div>
+        <h2 style={{margin:'8px', color:'white'}}>Peliculas similares:</h2>
+        <InTheater/>
+    </div>
+    </>
     );
 }
 
