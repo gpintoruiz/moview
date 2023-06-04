@@ -64,7 +64,7 @@ function MainCarrusel() {
                   <b>{movie.title}</b>
                 </h3>
                 <p>
-                  <b>Estreno: {movie.release_date}</b>
+                  <b>{movie.release_date}</b>
                 </p>
                 <p>
                   <b>Generos: {movie.genre_ids}</b>

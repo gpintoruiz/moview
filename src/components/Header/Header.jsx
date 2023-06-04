@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthContext';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import icono from '../../img/icon.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import Login from '../Login/Login'
 import Notification from '../Notification/Notification'
+import Buscador from '../Buscador/Buscador';
 
 function NavHeader() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -48,19 +48,7 @@ function NavHeader() {
             <Notification/>
           </Nav>
           {/* Codigo del formulario usado para buscar una pelicula especifica */}
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button
-              className="bi bi-search"
-              variant="outline-secondary"
-              style={{ border: 'none', color: 'white' }}
-            ></Button>
-          </Form>
+          <Buscador/>
         </Navbar.Collapse>
       </Container>
     </Navbar>
