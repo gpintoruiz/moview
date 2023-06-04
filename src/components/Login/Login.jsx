@@ -80,7 +80,7 @@ import { AuthContext } from '../../AuthContext';
     return (
       <>
       {/* Este código es para que el al presionar el Button se abra el modal */}
-        <Button className='me-4 bi bi-person' variant="outline-secondary" onClick={handleShow} style={{border:'none', color:'white'}}></Button>
+        <Button className='me-4' variant="outline-secondary" onClick={handleShow} style={{border:'none', color:'white'}}>Iniciar sesión</Button>
         {/* Este es el código de todo el modal que contiene el login */}
         <Modal show={show} onHide={handleClose} className='text-black'>
           <Modal.Body className='bg-light p-5 d-flex flex-column align-items-center' style={{ borderRadius: '1rem'}}>
