@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Error from "./pages/Error404/Error404"
 import Comprobar from "./pages/Comprobar";
 import { AuthProvider } from './AuthContext';
-import Detalle from "./components/DetallePelicula/DetallePelicula";
+import Detalle from './pages/DetallePelicula/DetallePelicula'
 
 function App() {
   return (

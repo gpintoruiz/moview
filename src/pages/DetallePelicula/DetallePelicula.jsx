@@ -4,7 +4,6 @@ import {Col, Row} from 'react-bootstrap';
 import rottenT from '../../img/rottenTomatoes.png'
 import Metta from '../../img/Metacritic.png'
 import imdb from '../../img/IMDB.png'
-import inTheater from '../../components/InTheater/InTheater';
 
 function detallePelicula() {
 return (
