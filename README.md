@@ -3,7 +3,7 @@ Moview es una plataforma de reseñas de películas (repositorio con propósitos 
 
 Manual de Instalacion del aplicativo web de Moview:
 
--A  En caso de que se haya descargado como .zip del repositorio de github (https://github.com/Majinka10/moview.git Importante: Descargar de la branch 'front')
+-A  En caso de que se haya descargado como .zip del repositorio de github (https://github.com/Majinka10/moview.git) Importante: Descargar de la branch 'front'
 
     1. Se debe crear un aplicativo de react con el nombre 'moview' (sin las comillas)
     2. Se debe descomprimir el .zip descargado del repositorio, luego copiar y pegar todos los archivos en la carpeta fuente del proyecto de react (creado en el paso 1) y darle a reemplazar a todos los archivos en caso de ser necesario.
