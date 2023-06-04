@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../AuthContext';
 
-
-
   function Login() {
 
     // Funcion del reCAPTCHA
@@ -37,10 +35,11 @@ import { AuthContext } from '../../AuthContext';
     // Lógica de el login
 
     const { setIsLoggedIn } = useContext(AuthContext);
-    const [email, setEmail] = useState('')
-    const [password,setPassword] = useState('')
     const navigate = useNavigate();
     const [showError, setShowError] = useState(false);
+    const [email, setEmail] = useState(localStorage.getItem('email') || '');
+    const [password, setPassword] = useState(localStorage.getItem('password') || '');
+
 
     
     const handleLogin = async (event) => {
@@ -60,16 +59,19 @@ import { AuthContext } from '../../AuthContext';
     
       if (email === fakeEmail && password === fakePassword) {
         // Inicio de sesión exitoso
-        setIsLoggedIn(true); // Aquí se establece la variable global o de estado para indicar que el usuario está logueado
+        setIsLoggedIn(true);
         setShowError(false);
         handleClose();
-        navigate('/comprobar'); 
+        navigate('/comprobar');
+    
+        // Guardar el email y la contraseña en localStorage
+        window.localStorage.setItem('email', email);
+        window.localStorage.setItem('password', password);
       } else {
         // Credenciales incorrectas
         setShowError(true);
       }
     };
-    
     
     // Este código me ayuda a mostrar unos mensajes cuando el botón es clickeado comprobando si el reCAPTCHA esté verificado y los campos estén llenos
 
