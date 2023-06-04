@@ -3,13 +3,14 @@ import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import './InTheater.css'
 import Card from 'react-bootstrap/Card';
+import star from '../../img/estrella.png'
 import Row from 'react-bootstrap/Row';
 
 function InTheater() {
 
     // Constantes de estilo
 
-    const starSize = '2rem';
+    const starSize = '2vw';
 
     //Constantes de la API
 
@@ -60,18 +61,16 @@ function InTheater() {
 
       return groups.map((group, index) => (
         <Carousel.Item key={index}>
-          <Row xs={5} md={5} lg={5} className="m-3">
+          <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
             {group.map((movie) => (
               <Card key={movie.id} style={{background:'none'}}>
                 <Card.Img src={`${URL_IMAGE}${movie.poster_path}`}/>
                 <Card.ImgOverlay id="overlay">
-                  <Card.Text className="text-white m-1">
-
-                  {[1, 2, 3, 4, 5].map((index) => (<img className='mb-3 m-1 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
-
+                  <Card.Text className="text-white m-1 text">
+                  {[1, 2, 3, 4, 5].map((index) => (<img src={star} className='star mb-3 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
                     <h3>{movie.title}</h3>
-                    <p>{movie.release_date}</p>
-                    <p>{movie.genre_ids}</p>
+                    <p>Año: <b>{movie.release_date}</b></p>
+                    <p>Generos: <b>{movie.genre_ids}</b> </p>
                   </Card.Text>
                 </Card.ImgOverlay>
               </Card>

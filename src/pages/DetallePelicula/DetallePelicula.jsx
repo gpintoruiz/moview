@@ -4,8 +4,8 @@ import {Col, Row} from 'react-bootstrap';
 import rottenT from '../../img/rottenTomatoes.png'
 import Metta from '../../img/Metacritic.png'
 import imdb from '../../img/IMDB.png'
-import PeliculasSimilares from '../../components/DetallePelicula/PeliculasSimilares';
-import Trailer from '../../components/DetallePelicula/Trailer';
+import Related from '../../components/Related/Related';
+import Trailer from '../../components/Trailer/Trailer'
 
 function detallePelicula() {
 return (
@@ -76,7 +76,7 @@ return (
     {/* Div que contiene la llamada al componente que genera el carrusel de peliculas similares */}
     <div>
         <h2 style={{margin:'8px', color:'white'}}>Peliculas similares:</h2>
-        <PeliculasSimilares/>
+        <Related />
     </div>
 
     {/* Div que contiene el componente que genera las reseñas */}

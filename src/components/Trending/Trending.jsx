@@ -1,5 +1,6 @@
 import './Trending.css';
 import Card from 'react-bootstrap/Card';
+import star from '../../img/estrella.png'
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -7,7 +8,7 @@ import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 function Trending() {
-  const starSize = '2rem';
+  const starSize = '2vw';
 
   // Constantes de la API
   const API_URL = 'https://api.themoviedb.org/3';
@@ -42,30 +43,30 @@ function Trending() {
   const renderSlides = () => {
     return movies.map((movie) => (
       <div key={movie.id}>
-        <Row>
-          <Card style={{ background: 'none'}}>
-            <Card.Img
+        <Row className='g-4 align align-items-center justify-content-center'>
+          <Card Classname='t-card' style={{background:'none', width:'30vw'}}>
+            <Card.Img Classname='t-card-img'
               src={`${URL_IMAGE}${movie.poster_path}`}
               alt="Card image"
             />
-            <Card.ImgOverlay id="overlay">
-              <Card.Text className="text-white">
+            <Card.ImgOverlay id="t-overlay" >
+              <Card.Text className="text-white t-text">
                 {[1, 2, 3, 4, 5].map((index) => (
                   <img
-                    className="mb-3 m-1 bi bi-star-fill"
+                    src={star}
+                    className=" star mb-3 bi bi-star-fill"
                     style={{ width: starSize, color: 'yellow' }}
                     key={index}
                   />
                 ))}
-
                 <h3>
                   <b>{movie.title}</b>
                 </h3>
                 <p>
-                  <b>{movie.release_date}</b>
+                  <b>Año: {movie.release_date}</b>
                 </p>
                 <p>
-                  <b>{movie.genre_ids}</b>
+                  <b>Generos: {movie.genre_ids}</b>
                 </p>
               </Card.Text>
             </Card.ImgOverlay>

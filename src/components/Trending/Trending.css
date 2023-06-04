@@ -1,13 +1,13 @@
     .g-4 {
-    justify-content: center;
     margin-top: 15px;
     margin-bottom: 15px;
     }
    
     .t-card {
-     height: 40vw !important;
-     padding: 0px !important;
+     width: 30vw !important;
+     padding: 0px ;
      margin-left:10px;
+     margin-bottom: 10px;
      margin-right:10px;
      border: 0px !important;
     }
@@ -18,22 +18,28 @@
      width: 3vw;
     }
    
-    .t-text > h3, .t-text > p {
-     color:rgb(0, 0, 0) !important; 
+    .t-text > h3 {
+   color:rgb(255, 255, 255) !important; 
+     margin: 2px;
+     font-size: 2.1vw;
+    }
+    
+    .t-text > p {
+     color:rgb(255, 255, 255) !important; 
      margin: 2px;
      font-size: 1.8vw;
     }
     
     #t-overlay {
-     top: 40vw;
+     top: 43vw;
      overflow: hidden;
     }
    
     .t-card:hover .t-card-img {
-       opacity:0.2;
+      opacity:0.2;
     } 
    
-    .t-card:hover #t-overlay{
+    .card:hover #t-overlay{
      top: .5vw;
      transition: all 1.5s;
     }
@@ -46,7 +52,7 @@
     @media screen and (max-width:630px)
    {
       .t-text > h3, .t-text > p {
-         color:rgb(0, 0, 0) !important; 
+         color:rgb(246, 244, 244) !important; 
          margin: 2px;
          font-size: 2vw;
       }

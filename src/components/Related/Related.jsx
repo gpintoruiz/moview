@@ -2,7 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import star from '../../img/estrella.png'
-import './PeliculasSimilares.css'
+import './Related.css'
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { Button } from 'react-bootstrap';
@@ -58,26 +58,16 @@ function PeliculasSimilares() {
 
       return groups.map((group, index) => (
         <Carousel.Item key={index}>
-          <Row xs={5} md={5} lg={5} className="m-2">
+          <Row xs={3} md={5} lg={5} className="m-3 align-items-center justify-content-center">
             {group.map((movie) => (
-              <Card className="card" key={movie.id} style={{background:'none'}}>
-                <Card.Img
-                  className="PS-card-img"
-                  src={`${URL_IMAGE}${movie.poster_path}`}
-                  alt="Card image"
-                />
-                <Card.ImgOverlay id="PS-overlay">
-                  <Card.Text className="text-white m-1">
-                  {[1, 2, 3, 4, 5].map((index) => (<img src={star} alt="star" className='mb-3 m-1' style={{ width: starSize }} key={index}/>))}
-                    <h3>
-                      <b>{movie.title}</b>
-                    </h3>
-                    <p>
-                      <b>2021</b>
-                    </p>
-                    <p>
-                      <b>Genres: Drama, Comedy, Adventure</b>
-                    </p>
+              <Card key={movie.id} style={{background:'none'}}>
+                <Card.Img src={`${URL_IMAGE}${movie.poster_path}`}/>
+                <Card.ImgOverlay id="R-overlay">
+                  <Card.Text className="text-white m-1 R-text">
+                  {[1, 2, 3, 4, 5].map((index) => (<img src={star} className='star mb-3 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
+                    <h3>{movie.title}</h3>
+                    <p>Año: <b>{movie.release_date}</b></p>
+                    <p>Generos: <b>{movie.genre_ids}</b> </p>
                   </Card.Text>
                 </Card.ImgOverlay>
               </Card>
