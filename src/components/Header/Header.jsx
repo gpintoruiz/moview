@@ -37,6 +37,8 @@ function NavHeader() {
         <Navbar.Collapse id="navbarScroll">
           {/* Codigo del nav que contiene el boton de home, help, notificaciones y el de Login */}
           <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            {/* Codigo del formulario usado para buscar una pelicula especifica */}
+            <Buscador/>
             <Link to="/"><Button variant="outline-secondary" className="me-4" style={{ border: 'none', color: 'white' }}>Home</Button></Link>
             <Link to="/help"><Button variant="outline-secondary" className="me-4" style={{ border: 'none', color: 'white' }}>Help</Button></Link>
             {/* Mostrar Logout en lugar de Login cuando el usuario está autenticado */}
@@ -47,8 +49,6 @@ function NavHeader() {
             (<Login/>)}
             <Notification/>
           </Nav>
-          {/* Codigo del formulario usado para buscar una pelicula especifica */}
-          <Buscador/>
         </Navbar.Collapse>
       </Container>
     </Navbar>

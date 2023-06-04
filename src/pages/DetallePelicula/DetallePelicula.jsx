@@ -6,7 +6,7 @@ import Metta from '../../img/Metacritic.png'
 import imdb from '../../img/IMDB.png'
 import Related from '../../components/Related/Related';
 import Trailer from '../../components/Trailer/Trailer'
-import Reseña from '../../components/DetallePelicula/Reseña';
+import Reseña from '../../components/Reseña/Reseña';
 import { Link, useNavigate } from 'react-router-dom';
 
 function detallePelicula() {

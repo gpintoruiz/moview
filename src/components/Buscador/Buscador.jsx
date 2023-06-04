@@ -47,12 +47,13 @@ function Buscador() {
   },[])
 
   return (
-    <Form className="d-flex">
+    <Form className="d-flex" onSubmit={searchMovies}>
       <Form.Control
         type="search"
         placeholder="Search"
         className="me-2"
         aria-label="Search"
+        onChange={(e)=>setSearchKey(e.target.value)}
       />
       <Button
         className="bi bi-search"
