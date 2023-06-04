@@ -69,7 +69,7 @@ function InTheater() {
                   <Card.Text className="text-white m-1 text">
                   {[1, 2, 3, 4, 5].map((index) => (<img src={star} className='star mb-3 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
                     <h3>{movie.title}</h3>
-                    <p>Año: <b>{movie.release_date}</b></p>
+                    <p>Estreno: <b>{movie.release_date}</b></p>
                     <p>Generos: <b>{movie.genre_ids}</b> </p>
                   </Card.Text>
                 </Card.ImgOverlay>

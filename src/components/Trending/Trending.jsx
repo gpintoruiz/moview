@@ -63,7 +63,7 @@ function Trending() {
                   <b>{movie.title}</b>
                 </h3>
                 <p>
-                  <b>Año: {movie.release_date}</b>
+                  <b>Estreno: {movie.release_date}</b>
                 </p>
                 <p>
                   <b>Generos: {movie.genre_ids}</b>
