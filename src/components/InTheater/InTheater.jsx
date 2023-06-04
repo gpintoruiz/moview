@@ -84,7 +84,8 @@ function InTheater() {
 
       {renderSlides()}
 
-      </Carousel>;
+    </Carousel>;
+    
 }
 
 export default InTheater;

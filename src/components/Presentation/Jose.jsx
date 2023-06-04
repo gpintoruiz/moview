@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {Col, Row} from 'react-bootstrap';
-import Guille from '../../img/Guillermo.jpg';
+import JosePic from '../../img/jose.jpg';
 import './Presentation.css'
 
 function Jose() {
@@ -25,15 +25,15 @@ function Jose() {
         <Row className='d-flex align-items-center justify-content-center'>
           {/* 1era Columna del Modal (Imagen de Jose) */}
           <Col xs={10} sm={4} lg={4} className='imgProgramador d-flex align-items-center justify-content-center' style={{marginright:'3px', marginBottom:'5px'}}> 
-            <img src={Guille} alt="imagen de Jose" className='ml-3'/>
+            <img src={JosePic} alt="imagen de Jose" className='ml-3'/>
           </Col>
           {/* 2da Columna del Modal (Informacion Sobre Jose) */}
           <Col xs={12} sm={8} lg={8} className='datosProgramador p-4 d-flex flex-column'> 
 
             <h3>Jose David Silva Solano</h3>
-            <p><b>Alias:</b> Apasionado de la programación.</p>
-            <p><b>Objetivo:</b> Combinar mis conocimientos técnicos con mi interés en la inteligencia artificial, 
-            especialmente en Machine learning y deep learning.</p>
+            <p><b>Alias:</b> SilvaCode.</p>
+            <p><b>Objetivo:</b> Mi objetivo es poder ejercer mi profesión enfocándome en el ámbito del desarrollo
+            web para poder generar nuevas herramientas informaticas que faciliten la cotidianidad de la sociedad.</p>
             <p><b>Habilidades:</b> Manejo de Phyton, Java, C++, desarrollo web y bases de datos.</p>
             <p><b>Hobbies:</b> Jugar MicroFutbol.</p>
             <p style={{alignSelf:'center'}}><b>Redes sociales</b></p>
