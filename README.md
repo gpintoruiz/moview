@@ -7,7 +7,7 @@ Manual de Instalacion del aplicativo web de Moview:
 
     1. Se debe crear un aplicativo de react con el nombre 'moview' (sin las comillas)
     2. Se debe descomprimir el .zip descargado del repositorio, luego copiar y pegar todos los archivos en la carpeta fuente del proyecto de react (creado en el paso 1) y darle a reemplazar a todos los archivos en caso de ser necesario.
-    3.Luego se debe abrir Visual studio code, posicionarse en la carpeta del proyecto (moview) abrir la consola y ejecutar el comando 'npm install' para que instale todas las dependencias, librerias etc; las cuales estan declaradas en package.json. Con esto el aplicativo web ya deberia estar listo para las diferentes pruebas que quiera hacer.
+    3. Luego se debe abrir Visual studio code, posicionarse en la carpeta del proyecto (moview) abrir la consola y ejecutar el comando 'npm install' para que instale todas las dependencias, librerias etc; las cuales estan declaradas en package.json. Con esto el aplicativo web ya deberia estar listo para las diferentes pruebas que quiera hacer.
 
 -B. En caso de hacer un git pull del repositorio (https://github.com/Majinka10/moview.git)
 
