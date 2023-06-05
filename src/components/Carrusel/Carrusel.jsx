@@ -2,7 +2,7 @@ import './Carrusel.css';
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import star from '../../img/estrella.png'
+import star from '../../img/estrella.png';
 
 
 function MainCarrusel() {
