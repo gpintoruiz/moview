@@ -15,11 +15,6 @@ Manual de Instalacion del aplicativo web de Moview:
     2. Se debe iniciar un repositorio local para el proyecto (git init), luego añadir el repositorio para poder hacer el git pull (git remote add origin https://github.com/Majinka10/moview.git) luego pararse en la branch front, (npm checkout front) y hacer el git pull.
     3. Luego debera ejecutar el comando 'npm install' para que instale todas las dependencias, librerias etc; las cuales estan declaradas en package.json. Con esto el aplicativo web ya deberia estar listo para las diferentes pruebas que quiera hacer.
 
--C. En caso de descargar el zip del enlace de drive (esta todo (incluido los modulos) por lo que el zip sera bastante pesado)
-
-    1. Descomprimir el Zip
-    2. Abrir Visual studio Code, pararse en la carpeta del proyecto (moview), abrir la terminal/consola y ejecutar el comando 'npm install' para que instale todas las dependencias, librerias etc; las cuales estan declaradas en package.json. Con esto el aplicativo web ya deberia estar listo para las diferentes pruebas que quiera hacer.
-
 Manual de Funcionalidades Implementadas en la 1era entrega:
 
 -A. Paginas:
