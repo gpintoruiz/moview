@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {Col, Row} from 'react-bootstrap';
-import JosePic from '../../img/jose.jpg';
+import JosePic from '../../img/Jose.jpg';
 import './Presentation.css'
 
 function Jose() {
