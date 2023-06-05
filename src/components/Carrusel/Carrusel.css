@@ -13,10 +13,6 @@
   display: none;
 }
 
-.caption {
-  top: 40vw;
-}
-
 .caption > h3 {
   font-size: 2.5vw;
   margin: 4px;
@@ -44,9 +40,5 @@
     font-size: 2.8vw;
     margin: 4px;
     padding: 1px;
-  }
-
-  .caption {
-    top: 35vw;
   }
 }
