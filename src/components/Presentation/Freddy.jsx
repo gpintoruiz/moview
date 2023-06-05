@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {Col, Row} from 'react-bootstrap';
-import freddy from '../../img/Freddy.jpg';
+import freddy from '../../img/freddy.jpg';
 import './Presentation.css'
 
 function Freddy() {
