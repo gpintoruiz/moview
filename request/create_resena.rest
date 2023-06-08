@@ -1,0 +1,16 @@
+POST http://localhost:3001/api/resenas 
+content-Type: application/json
+
+{
+    "nombreResenador": "Pedro Sanchez",
+    "resena": "Wakala"
+}
+
+###
+
+POST http://localhost:3001/api/resenas
+Content-Type: application/json
+
+{
+
+}

@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 let reseñas = [
     {
       "nombreResenador": "Juan Pérez",
@@ -31,8 +33,48 @@ app.get('/', (request, response) =>{
     response.send('<h1>Hellow World</h1>')
 })
 
-app.get('/api/notes',(request, response)=>{
+app.get('/api/resenas',(request, response)=>{
     response.json(reseñas)
+})
+
+app.get('/api/resenas/:id',(request, response)=>{
+    const id = request.params.id
+    const reseña = reseñas.find(reseña => reseña.id == id)
+    if (reseña){
+      response.json(reseña)
+    } else{
+      response.status(404).end()
+    }
+})
+
+app.delete('/api/resenas/:id',(request, response)=>{
+  const id  = request.params.id
+  reseñas = reseñas.filter(resena => resena.id != id)
+  response.status(204).end()
+})
+
+app.post('/api/resenas',(request, response)=>{
+  const reseña = request.body
+
+  if (!reseña || !reseña.resena){
+    return response.status(400).json({
+      error: 'reseña.resena is missing'
+    })
+  }
+
+  const ids = reseñas.map(reseña => reseña.id)
+  const maxId = Math.max(... ids)
+
+  const newResena = {
+    id:maxId+1,
+    resena: reseña.resena,
+    nombreResenador: reseña.nombreResenador,
+    date: new Date().toISOString()
+  }
+
+  reseñas = [... reseñas, newResena]
+
+  response.status(201).json(newResena)
 })
 
 const PORT = 3001
