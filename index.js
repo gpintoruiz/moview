@@ -33,17 +33,13 @@ app.put('/api/usuarios/:id', (request, response, next) => {
   Usuario.findByIdAndUpdate(id, newUserInfo, {new: true})
     .then(result => {
       response.json(result)
-    }).catch(err =>{
-      next(err)
-    })
+    }).catch(err => next(err))
 })
 
 app.get('/api/usuarios',(request, response, next)=>{
   Usuario.find({}).then(usuarios =>{
     response.json(usuarios)
-  }).catch(err =>{
-    next(err)
-  })
+  }).catch(err => next(err))
 })
 
 app.get('/api/usuarios/:id',(request, response,next)=>{
@@ -55,9 +51,7 @@ app.get('/api/usuarios/:id',(request, response,next)=>{
     } else{
       response.status(404).end()
     }
-  }).catch(err =>{
-    next(err)
-  })
+  }).catch(err => next(err))
 })
 
 app.delete('/api/usuarios/:id',(request, response,next)=>{
@@ -65,9 +59,7 @@ app.delete('/api/usuarios/:id',(request, response,next)=>{
   
   Usuario.findByIdAndRemove(id).then(() =>{
     response.status(204).end()
-  }).catch(err =>{
-    next(err)
-  })
+  }).catch(err => next(err))
 })
 
 app.post('/api/usuarios',(request, response, next)=>{
@@ -88,9 +80,7 @@ app.post('/api/usuarios',(request, response, next)=>{
 
   newUsuario.save().then(savedUser => {
     response.status(201).json(savedUser)
-  }).catch(err =>{
-    next(err)
-  })
+  }).catch(err => next(err))
 })
 
 app.use(notFound)
