@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import reviewService from '../../services/reseñas'
+import React, { useEffect, useState } from 'react';
+import reviewServce from '../../services/reseñas';
 
-function Reseña() {
+const Reseñas = () => {
+  const [reseñas, setReseñas] = useState([]);
 
-    const [reviews, setReviews] = useState([]) 
+  useEffect(() => {
+    reviewServce.getAll()
+      .then(response => {
+        setReseñas(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
-    useEffect(() => {
-      reviewService
-        .getAll()
-        .then(initialReviews => {
-          setReviews(initialReviews)
-        })
-    }, [])
+  return (
+    <div>
+      {reseñas.map(reseña => (
+        <div key={reseña.id}>
+          <h3>{reseña.nombreAutor}</h3>
+          <p>{reseña.contenido}</p>
+          <p>{reseña.date}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-
-    const renderReviews = () =>{
-      return(
-        <ul>
-          {reviewsToShow.map((note, i) => 
-            <p>{review.nombreAutor}</p>
-          )}
-        </ul> 
-      )
-    }
-}
-  
-  export default Reseña;
+export default Reseñas;

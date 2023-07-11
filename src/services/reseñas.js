@@ -5,7 +5,7 @@ const getAll = () =>{
     const request = axios.get(baseUrl)
     const nonExixting={
         id: 10000,
-        resena: 'Not saved to server',
+        cotenido: 'Not saved to server',
         nombreAutor: 'Not name',
         date: new Date().toISOString()
     }
