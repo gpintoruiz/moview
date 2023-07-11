@@ -1,16 +1,9 @@
-POST http://localhost:3001/api/resenas 
+POST http://localhost:3001/api/usuarios 
 content-Type: application/json
 
 {
-    "nombreResenador": "Pedro Sanchez",
-    "resena": "Wakala"
-}
-
-###
-
-POST http://localhost:3001/api/resenas
-Content-Type: application/json
-
-{
-
+    "nombre": "Pedro Sanchez",
+    "pais": "Colombia",
+    "email": "oasasd@gmail.com",
+    "password": "Cabeza"
 }
