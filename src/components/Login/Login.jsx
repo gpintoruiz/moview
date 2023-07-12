@@ -1,6 +1,6 @@
 import { Form, Button, Modal, InputGroup } from 'react-bootstrap';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext, useEffect } from 'react';
 import loginService  from '../../services/login';
 import { AuthContext } from '../../AuthContext';
@@ -22,7 +22,6 @@ import { AuthContext } from '../../AuthContext';
 
     // Funcion del reCAPTCHA
     function onChange(value) {
-      console.log("Captcha value:", value);
       setIsCaptchaVerified(true);
     }
 
@@ -49,11 +48,8 @@ import { AuthContext } from '../../AuthContext';
     // Lógica de el login
 
     const { setIsLoggedIn } = useContext(AuthContext);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [showError, setShowError] = useState(false);
-    // const [email, setEmail] = useState(localStorage.getItem('email') || '');
-    // const [password, setPassword] = useState(localStorage.getItem('password') || '');
-
 
     const handleLogin = async (event) => {
       event.preventDefault()
@@ -78,6 +74,7 @@ import { AuthContext } from '../../AuthContext';
         setIsLoggedIn(true);
         setShowError(false);
         handleClose();
+        navigate('/');
       } catch(e) {
         setShowError(true)
         setTimeout(() => {
@@ -86,38 +83,6 @@ import { AuthContext } from '../../AuthContext';
       }
   
     }
-
-    
-    // const handleLogin = async (event) => {
-    //   event.preventDefault();
-    
-    //   if (!isCaptchaVerified) {
-    //     return;
-    //   }
-    
-    //   if (email.trim() === '' || password.trim() === '') {
-    //     return;
-    //   }
-    
-    //   // Simulación de inicio de sesión exitoso
-    //   const fakeEmail = 'example@example.com';
-    //   const fakePassword = 'password';
-    
-    //   if (email === fakeEmail && password === fakePassword) {
-    //     // Inicio de sesión exitoso
-    //     setIsLoggedIn(true);
-    //     setShowError(false);
-    //     handleClose();
-    //     navigate('/comprobar');
-    
-    //     // Guardar el email y la contraseña en localStorage
-    //     window.localStorage.setItem('email', email);
-    //     window.localStorage.setItem('password', password);
-    //   } else {
-    //     // Credenciales incorrectas
-    //     setShowError(true);
-    //   }
-    // };
     
     // Este código me ayuda a mostrar unos mensajes cuando el botón es clickeado comprobando si el reCAPTCHA esté verificado y los campos estén llenos
 
