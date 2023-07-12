@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Error from "./pages/Error404/Error404"
 import Comprobar from "./pages/Comprobar";
 import { AuthProvider } from './AuthContext';
-import Detalle from './pages/DetallePelicula/DetallePelicula'
+import Detalle from './components/DetallePelicula/DetallePelicula'
 import Registro from "./pages/Registrarse/registrarse";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
           <Route path="/help" element={<Help />} />
           <Route path="*" element={<Error />} />
           <Route path='/comprobar' element={<Comprobar />} />
-          <Route path="/detalle" element={<Detalle/>}/>
+          <Route path="/detalle/:id" element={<Detalle/>}/>
           <Route path="/registro" element = {<Registro/>}/>
         </Routes>
         <Footer />

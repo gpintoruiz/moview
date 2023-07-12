@@ -2,6 +2,7 @@ import './Carrusel.css';
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import star from '../../img/estrella.png';
 
 
@@ -42,6 +43,7 @@ function MainCarrusel() {
   const renderSlides = () => {
     return movies.map((movie) => (
       <Carousel.Item key={movie.id}>
+        <Link to={`/detalle/${movie.id}`}>
         <img 
           src={`${URL_IMAGE}${movie.poster_path}`} alt="Poster" style={{opacity:'0.2', height:'75vw'}}/>
           <Carousel.Caption className="caption text-white">
@@ -65,6 +67,7 @@ function MainCarrusel() {
                 </p>
                 <p>{movie.overview}</p>
           </Carousel.Caption>
+          </Link>
       </Carousel.Item>
     ));
   };

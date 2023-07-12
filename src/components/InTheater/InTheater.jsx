@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react';
 import './InTheater.css'
 import Card from 'react-bootstrap/Card';
 import star from '../../img/estrella.png'
+import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 
 function InTheater() {
@@ -77,6 +78,7 @@ function InTheater() {
 
       return groups.map((group, index) => (
         <Carousel.Item key={index}>
+          <Link to={`/detalle/${movie.id}`}>
           <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
             {group.map((movie) => (
               <Card key={movie.id} style={{background:'none'}}>
@@ -92,6 +94,7 @@ function InTheater() {
               </Card>
             ))}
           </Row>
+          </Link>
         </Carousel.Item>
       ));
     };

@@ -6,6 +6,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Link } from 'react-router-dom';
 
 function Trending() {
   const starSize = '2vw';
@@ -44,6 +45,7 @@ function Trending() {
     return movies.map((movie) => (
       <div key={movie.id}>
         <Row className='g-4 align align-items-center justify-content-center'>
+        <Link to={`/detalle/${movie.id}`}>
           <Card Classname='t-card' style={{background:'none', width:'30vw'}}>
             <Card.Img Classname='t-card-img'
               src={`${URL_IMAGE}${movie.poster_path}`}
@@ -71,6 +73,7 @@ function Trending() {
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
+          </Link>
         </Row>
       </div>
     ));
