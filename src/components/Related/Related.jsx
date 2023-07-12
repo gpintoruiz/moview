@@ -1,72 +1,59 @@
 import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
-import './Related.css'
+import React, { useState, useEffect } from 'react';
+import './Related.css';
 import Card from 'react-bootstrap/Card';
-import star from '../../img/estrella.png'
+import star from '../../img/estrella.png';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
 
-
 function Related() {
+  // Constantes de estilo
+  const starSize = '2vw';
 
-    // Constantes de estilo
+  // Constantes de la API
+  const API_URL = 'https://api.themoviedb.org/3';
+  const API_KEY = '49149d975d5c0df0a79802f0a64ad893';
+  const URL_IMAGE = 'https://image.tmdb.org/t/p/original';
 
-    const starSize = '2vw';
+  // Declaracion de las variables de estado
+  const [movies, setMovies] = useState([]);
+  const [searchKey, setSearchKey] = useState('');
+  const [groupSize, setGroupSize] = useState(5); // Valor inicial
 
-    //Constantes de la API
+  // Petición a la API
+  const fetchMovies = async (searchKey) => {
+    const type = searchKey ? 'search' : 'discover';
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/${type}/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: searchKey,
+      },
+    });
 
-    const API_URL = 'https://api.themoviedb.org/3'
-    const API_KEY='49149d975d5c0df0a79802f0a64ad893'
-    const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
-    const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
+    setMovies(results);
+  };
 
-    // Declaracion de las variables de estado
-
-    const [movies,setMovies] = useState([]);
-    const [searchKey, setSearchKey] = useState("");
-    const [movie,setMovie] = useState({titel:"Loading Movies"});
-    const [groupSize, setGroupSize] = useState(5); // Valor inicial
-
-
-    //Petición a la API
-
-    const fetchMovies = async(searchKey) =>{
-        const type = searchKey ? "search" : "discover"
-        const {data:{results},
-        } = await axios.get(`${API_URL}/${type}/movie` , {
-            params : {
-                api_key: API_KEY,
-                query: searchKey,
-            },
-        });
-
-        setMovies(results)
-        setMovie(results[0])
-    }
-
-    useEffect(()=>{
-        fetchMovies();
-    },[])
-
-    useEffect(() => {
-      fetchMovies();
-      window.addEventListener('resize', handleResize); // Agregar el evento resize al montar el componente
-      return () => {
-        window.removeEventListener('resize', handleResize); // Eliminar el evento resize al desmontar el componente
-      }
-    }, [])
-  
-    // Función para manejar el cambio de tamaño de viewport
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setGroupSize(3);
-      } else {
-        setGroupSize(5);
-      }
+  useEffect(() => {
+    fetchMovies();
+    window.addEventListener('resize', handleResize); // Agregar el evento resize al montar el componente
+    return () => {
+      window.removeEventListener('resize', handleResize); // Eliminar el evento resize al desmontar el componente
     };
+  }, []);
 
-    // Código para el renderizado de los slides
+  // Función para manejar el cambio de tamaño de viewport
+  const handleResize = () => {
+    if (window.innerWidth < 768) {
+      setGroupSize(3);
+    } else {
+      setGroupSize(5);
+    }
+  };
+
+  // Código para el renderizado de los slides
   const renderSlides = () => {
     const groups = movies.reduce((acc, movie, index) => {
       const groupIndex = Math.floor(index / groupSize);
@@ -77,35 +64,42 @@ function Related() {
       return acc;
     }, []);
 
-      return groups.map((group, index) => (
-        <Carousel.Item key={index}>
-          <Link to={`/detalle/${movie.id}`}>
-          <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
-            {group.map((movie) => (
-              <Card key={movie.id} style={{background:'none'}}>
-                <Card.Img src={`${URL_IMAGE}${movie.poster_path}`}/>
+    return groups.map((group, index) => (
+      <Carousel.Item key={index}>
+        <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
+          {group.map((movie) => (
+            <Card key={movie.id} style={{ background: 'none' }}>
+              <Link to={`/detalle/${movie.id}`}>
+                <Card.Img src={`${URL_IMAGE}${movie.poster_path}`} />
                 <Card.ImgOverlay id="overlay">
                   <Card.Text className="text-white m-1 text">
-                  {[1, 2, 3, 4, 5].map((index) => (<img src={star} className='star mb-3 bi bi-star-fill' style={{ width: starSize }} key={index}/>))}
+                    {[1, 2, 3, 4, 5].map((index) => (
+                      <img src={star} className="star mb-3 bi bi-star-fill" style={{ width: starSize }} key={index} />
+                    ))}
                     <h3>{movie.title}</h3>
-                    <p><b>{movie.release_date}</b></p>
-                    <p>Generos: <b>{movie.genre_ids}</b> </p>
+                    <p>
+                      <b>{movie.release_date}</b>
+                    </p>
+                    <p>
+                      Generos: <b>{movie.genre_ids}</b>
+                    </p>
                   </Card.Text>
                 </Card.ImgOverlay>
-              </Card>
-            ))}
-          </Row>
-          </Link>
-        </Carousel.Item>
-      ));
-    };
+              </Link>
+            </Card>
+          ))}
+        </Row>
+      </Carousel.Item>
+    ));
+  };
 
-    return <Carousel indicators={false} fade prevIcon={<span className='bi bi-caret-left-fill carousel-control-prev' style={{color:'white', background:'none', border:'none', fontSize:'4vw'}}/>} nextIcon={<span className='bi bi-caret-right-fill carousel-control-next' style={{color:'white', background:'none', border:'none', fontSize:'4vw'}}/>}> 
+  return (
+    <Carousel indicators={false} fade prevIcon={<span className="bi bi-caret-left-fill carousel-control-prev" style={{ color: 'white', background: 'none', border: 'none', fontSize: '4vw' }} />} nextIcon={<span className="bi bi-caret-right-fill carousel-control-next" style={{ color: 'white', background: 'none', border: 'none', fontSize: '4vw' }} />}>
 
       {renderSlides()}
 
-    </Carousel>;
-    
+    </Carousel>
+  );
 }
 
 export default Related;

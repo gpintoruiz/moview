@@ -1,8 +1,7 @@
 .DP-container {
-    background: linear-gradient(rgba(5,7,12,0.85), rgba(5,7,12,0.85)), url('https://image.tmdb.org/t/p/original/4SMqo8Me8aCT4KAVLeG9pk8VYiN.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
 }
 
 #DP-poster {
@@ -17,5 +16,6 @@
 .DP-informacion {
     color: white;
 }
+
 
 
