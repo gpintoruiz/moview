@@ -1,6 +1,7 @@
 import { Form, Button, InputGroup, Card } from 'react-bootstrap';
 import React, { useState } from 'react';
 import './registrarse.css'
+import usersService from '../../services/users'
 
 function Registro() {
 
@@ -13,24 +14,25 @@ function Registro() {
     const [showPwd, setShowPwd] = useState(false);
     const [message, setMessage] = useState('');
 
-    const handleFields = () => {
-      
-      /*Comprobacion de que el email sea valido por medio de una expresion regular*/
+    const handleFields = async () => {
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
       const isValidEmail = emailRegex.test(email);
-
-      /*Comprobacion de que todos los espacios esten llenos, el email sea valido y 
-      que las contraseñas sean iguales*/
-      if (password === password_2 && password !== '' && isValidEmail===true && username !=='' && name !=='') {
-        setEmail('');
-        setPassword('');
-        setPassword_2('');
-        setMessage('');
-        setUsername('');
-        setName('');
-        alert('Registro Exitoso!');
+  
+      if (password === password_2 && password !== '' && isValidEmail && username !== '' && name !== '') {
+        try {
+          await usersService.create({ username, name, email, password });
+          setEmail('');
+          setPassword('');
+          setPassword_2('');
+          setMessage('');
+          setUsername('');
+          setName('');
+          alert('Registro Exitoso!');
+        } catch (error) {
+          setMessage(<p className="text-danger p-2">Error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.</p>);
+        }
       } else {
-        setMessage(<p className="text-danger p-2">Invalid email, username, name or password.</p>);
+        setMessage(<p className="text-danger p-2">Email, nombre de usuario, nombre o contraseña inválidos.</p>);
       }
     };
 

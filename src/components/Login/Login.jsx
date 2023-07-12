@@ -1,10 +1,24 @@
 import { Form, Button, Modal, InputGroup } from 'react-bootstrap';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { Link, useNavigate } from 'react-router-dom';
-import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import loginService  from '../../services/login';
 import { AuthContext } from '../../AuthContext';
 
   function Login() {
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [user, setUser] = useState(null)
+
+
+    useEffect(() =>{
+      const loggedUserJSON = window.localStorage.getItem('loggedAppUser')
+      if(loggedUserJSON){
+        const user = JSON.parse(loggedUserJSON)
+        setUser(user)
+      }
+    },[])
 
     // Funcion del reCAPTCHA
     function onChange(value) {
@@ -35,42 +49,75 @@ import { AuthContext } from '../../AuthContext';
     // Lógica de el login
 
     const { setIsLoggedIn } = useContext(AuthContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [showError, setShowError] = useState(false);
-    const [email, setEmail] = useState(localStorage.getItem('email') || '');
-    const [password, setPassword] = useState(localStorage.getItem('password') || '');
+    // const [email, setEmail] = useState(localStorage.getItem('email') || '');
+    // const [password, setPassword] = useState(localStorage.getItem('password') || '');
 
-    
+
     const handleLogin = async (event) => {
-      event.preventDefault();
-    
+      event.preventDefault()
+
       if (!isCaptchaVerified) {
         return;
       }
+  
+      try {
+        const user = await loginService.login({
+          email,
+          password
+        })
     
-      if (email.trim() === '' || password.trim() === '') {
-        return;
-      }
-    
-      // Simulación de inicio de sesión exitoso
-      const fakeEmail = 'example@example.com';
-      const fakePassword = 'password';
-    
-      if (email === fakeEmail && password === fakePassword) {
-        // Inicio de sesión exitoso
+        window.localStorage.setItem(
+          'loggedAppUser', JSON.stringify(user)
+        )
+  
+        setUser(user)
+        setEmail('')
+        setPassword('')
         setIsLoggedIn(true);
         setShowError(false);
         handleClose();
-        navigate('/comprobar');
-    
-        // Guardar el email y la contraseña en localStorage
-        window.localStorage.setItem('email', email);
-        window.localStorage.setItem('password', password);
-      } else {
-        // Credenciales incorrectas
-        setShowError(true);
+      } catch(e) {
+        setShowError(true)
+        setTimeout(() => {
+          setShowError(false)
+        }, 5000)
       }
-    };
+  
+    }
+
+    
+    // const handleLogin = async (event) => {
+    //   event.preventDefault();
+    
+    //   if (!isCaptchaVerified) {
+    //     return;
+    //   }
+    
+    //   if (email.trim() === '' || password.trim() === '') {
+    //     return;
+    //   }
+    
+    //   // Simulación de inicio de sesión exitoso
+    //   const fakeEmail = 'example@example.com';
+    //   const fakePassword = 'password';
+    
+    //   if (email === fakeEmail && password === fakePassword) {
+    //     // Inicio de sesión exitoso
+    //     setIsLoggedIn(true);
+    //     setShowError(false);
+    //     handleClose();
+    //     navigate('/comprobar');
+    
+    //     // Guardar el email y la contraseña en localStorage
+    //     window.localStorage.setItem('email', email);
+    //     window.localStorage.setItem('password', password);
+    //   } else {
+    //     // Credenciales incorrectas
+    //     setShowError(true);
+    //   }
+    // };
     
     // Este código me ayuda a mostrar unos mensajes cuando el botón es clickeado comprobando si el reCAPTCHA esté verificado y los campos estén llenos
 

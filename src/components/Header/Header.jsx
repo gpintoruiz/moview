@@ -15,7 +15,9 @@ function NavHeader() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // setUser(null)
     setIsLoggedIn(false);
+    window.localStorage.removeItem('loggedAppUser')
     navigate('/');
   };
 
