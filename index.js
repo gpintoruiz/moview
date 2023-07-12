@@ -48,6 +48,7 @@ app.get('/', (request, response) =>{
   response.send('<h1>Hellow World</h1>')
 })
 
+//Para obtener un solo usuario
 app.get('/api/users/:id', async(request, response,next)=>{
   const {id} = request.params
 
@@ -57,6 +58,7 @@ app.get('/api/users/:id', async(request, response,next)=>{
   }).catch(err => next(err))
 })
 
+//Para hacer actualizaciones a los datos del usuario
 app.put('/api/users/:id', async(request, response, next) => {
   const {id} = request.params
   const user = request.body
@@ -76,6 +78,7 @@ app.put('/api/users/:id', async(request, response, next) => {
     }).catch(err => next(err))
 })
 
+//Para hacer eliminar a un usuario
 app.delete('/api/users/:id', async (request, response,next)=>{
   const {id}  = request.params
   
