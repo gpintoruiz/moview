@@ -1,6 +1,5 @@
 import './Trending.css';
 import Card from 'react-bootstrap/Card';
-import star from '../../img/estrella.png'
 import Row from 'react-bootstrap/Row';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -61,27 +60,33 @@ function Trending() {
       .join(', ');
   };
 
+  const renderRatingStars = (rating) => {
+    const fullStars = Math.floor(rating / 2);
+    const hasHalfStar = rating % 2 !== 0;
+
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i className="bi bi-star-fill" key={`full-star-${i}`} style={{ color: 'yellow', marginRight: '5px', fontSize: starSize }}></i>);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<i className="bi bi-star-half" key="half-star" style={{ color: 'yellow', marginRight: '5px', fontSize: starSize }}></i>);
+    }
+
+    return stars;
+  };
+
   const renderSlides = () => {
     return movies.map((movie) => (
       <div key={movie.id}>
-        <Row className='g-4 align align-items-center justify-content-center'>
+        <Row className="g-4 align align-items-center justify-content-center">
           <Link to={`/detalle/${movie.id}`}>
-            <Card Classname='t-card' style={{ background: 'none', width: '30vw' }}>
-              <Card.Img Classname='t-card-img'
-                src={`${URL_IMAGE}${movie.poster_path}`}
-                alt="Card image"
-              />
-              <Card.ImgOverlay id="t-overlay" >
+            <Card className="t-card" style={{ background: 'none', width: '30vw' }}>
+              <Card.Img className="t-card-img" src={`${URL_IMAGE}${movie.poster_path}`} alt="Card image" />
+              <Card.ImgOverlay id="t-overlay">
                 <Card.Text className="text-white t-text">
-                  {[1, 2, 3, 4, 5].map((index) => (
-                    <img
-                      src={star}
-                      className=" star mb-3 bi bi-star-fill"
-                      style={{ width: starSize, color: 'yellow' }}
-                      key={index}
-                      alt='estrella'
-                    />
-                  ))}
+                  {renderRatingStars(movie.vote_average)}
                   <h3>
                     <b>{movie.title}</b>
                   </h3>

@@ -3,7 +3,6 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './InTheater.css';
 import Card from 'react-bootstrap/Card';
-import star from '../../img/estrella.png';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
 
@@ -19,7 +18,7 @@ function InTheater() {
   // Declaracion de las variables de estado
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState({});
-  const [movie, setMovie] = useState({ titel: 'Loading Movies' });
+  const [movie, setMovie] = useState({ title: 'Loading Movies' });
   const [groupSize, setGroupSize] = useState(5); // Valor inicial
 
   // Petición a la API para obtener la lista de géneros
@@ -77,6 +76,23 @@ function InTheater() {
       .join(', ');
   };
 
+  const renderRatingStars = (rating) => {
+    const fullStars = Math.floor(rating / 2);
+    const hasHalfStar = rating % 2 !== 0;
+
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i className="bi bi-star-fill" key={`full-star-${i}`} style={{ color: 'yellow', marginRight: '5px', fontSize: starSize }}></i>);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<i className="bi bi-star-half" key="half-star" style={{ color: 'yellow', marginRight: '5px', fontSize: starSize }}></i>);
+    }
+
+    return stars;
+  };
+
   // Código para el renderizado de los slides
   const renderSlides = () => {
     const groups = movies.reduce((acc, movie, index) => {
@@ -97,9 +113,7 @@ function InTheater() {
                 <Card.Img src={`${URL_IMAGE}${movie.poster_path}`} />
                 <Card.ImgOverlay id="overlay">
                   <Card.Text className="text-white m-1 text">
-                    {[1, 2, 3, 4, 5].map((index) => (
-                      <img src={star} className="star mb-3 bi bi-star-fill" style={{ width: starSize }} key={index} alt='estrella' />
-                    ))}
+                    {renderRatingStars(movie.vote_average)}
                     <h3>{movie.title}</h3>
                     <p>
                       <b>{movie.release_date}</b>
@@ -118,13 +132,35 @@ function InTheater() {
   };
 
   return (
-    <Carousel indicators={false} fade prevIcon={<span className="bi bi-caret-left-fill carousel-control-prev" style={{ color: 'white', background: 'none', border: 'none', fontSize: '4vw' }} />} nextIcon={<span className="bi bi-caret-right-fill carousel-control-next" style={{ color: 'white', background: 'none', border: 'none', fontSize: '4vw' }} />}>
-
+    <Carousel
+      indicators={false} // Desactiva la visualización de los indicadores
+      fade // Activa la transición de desvanecimiento
+      prevIcon={
+        <span
+          className="bi bi-caret-left-fill carousel-control-prev"
+          style={{
+            color: 'white',
+            background: 'none',
+            border: 'none',
+            fontSize: '4vw',
+          }}
+        />
+      }
+      nextIcon={
+        <span
+          className="bi bi-caret-right-fill carousel-control-next"
+          style={{
+            color: 'white',
+            background: 'none',
+            border: 'none',
+            fontSize: '4vw',
+          }}
+        />
+      }
+    >
       {renderSlides()}
-
     </Carousel>
   );
 }
 
 export default InTheater;
-

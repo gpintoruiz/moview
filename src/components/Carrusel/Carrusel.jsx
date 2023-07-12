@@ -3,11 +3,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import star from '../../img/estrella.png';
 
 function MainCarrusel() {
-  // Constantes de estilo
-  const starSize = '2.5vw';
 
   // Constantes de la API
   const API_URL = 'https://api.themoviedb.org/3';
@@ -62,21 +59,30 @@ function MainCarrusel() {
       .join(', ');
   };
 
+  const renderRatingStars = (rating) => {
+    const fullStars = Math.floor(rating / 2);
+    const hasHalfStar = rating % 2 !== 0;
+
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i className="bi bi-star-fill" key={`full-star-${i}`} style={{ fontSize:'2.5vw',color: 'yellow', marginRight: '5px' }}></i>);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<i className="bi bi-star-half" key="half-star" style={{ fontSize:'2.5vw', color: 'yellow', marginRight: '5px' }}></i>);
+    }
+
+    return stars;
+  };
+
   const renderSlides = () => {
     return movies.map((movie) => (
       <Carousel.Item key={movie.id}>
         <Link to={`/detalle/${movie.id}`}>
           <img src={`${URL_IMAGE}${movie.poster_path}`} alt="Poster" style={{ opacity: '0.2', height: '75vw' }} />
           <Carousel.Caption className="caption text-white">
-            {[1, 2, 3, 4, 5].map((index) => (
-              <img
-                src={star}
-                className="mb-3 m-1 bi bi-star-fill"
-                style={{ width: starSize, color: 'yellow' }}
-                key={index}
-                alt="Estrella"
-              />
-            ))}
+            {renderRatingStars(movie.vote_average)}
             <h3>
               <b>{movie.title}</b>
             </h3>

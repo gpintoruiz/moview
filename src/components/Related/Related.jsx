@@ -3,9 +3,8 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './Related.css';
 import Card from 'react-bootstrap/Card';
-import star from '../../img/estrella.png';
-import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
+import Row from 'react-bootstrap/Row';
 
 function Related({ movieId }) {
   // Constantes de estilo
@@ -77,6 +76,23 @@ function Related({ movieId }) {
       .join(', ');
   };
 
+  const renderRatingStars = (rating) => {
+    const fullStars = Math.floor(rating / 2);
+    const hasHalfStar = rating % 2 !== 0;
+
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<i className="bi bi-star-fill" key={`full-star-${i}`} style={{ color: 'yellow', marginRight: '5px', fontSize: starSize }}></i>);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<i className="bi bi-star-half" key="half-star" style={{ color: 'yellow', marginRight: '5px', fontSize: starSize }}></i>);
+    }
+
+    return stars;
+  };
+
   // Código para el renderizado de los slides
   const renderSlides = () => {
     const groups = movies.reduce((acc, movie, index) => {
@@ -87,7 +103,7 @@ function Related({ movieId }) {
       acc[groupIndex].push(movie);
       return acc;
     }, []);
-  
+
     return groups.map((group, index) => (
       <Carousel.Item key={index}>
         <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
@@ -99,9 +115,7 @@ function Related({ movieId }) {
                     <Card.Img src={`${URL_IMAGE}${movie.poster_path}`} />
                     <Card.ImgOverlay id="overlay">
                       <Card.Text className="text-white m-1 text">
-                        {[1, 2, 3, 4, 5].map((index) => (
-                          <img src={star} className="star mb-3 bi bi-star-fill" alt='estrella' style={{ width: starSize }} key={index} />
-                        ))}
+                        {renderRatingStars(movie.vote_average)}
                         <h3>{movie.title}</h3>
                         <p>
                           <b>{movie.release_date}</b>
@@ -121,7 +135,6 @@ function Related({ movieId }) {
       </Carousel.Item>
     ));
   };
-  
 
   return (
     <Carousel
