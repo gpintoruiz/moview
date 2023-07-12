@@ -7,7 +7,7 @@ import star from '../../img/estrella.png';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
 
-function Related() {
+function Related({ movieId }) {
   // Constantes de estilo
   const starSize = '2vw';
 
@@ -18,31 +18,48 @@ function Related() {
 
   // Declaracion de las variables de estado
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  const [genres, setGenres] = useState({});
   const [groupSize, setGroupSize] = useState(5); // Valor inicial
 
   // Petición a la API
-  const fetchMovies = async (searchKey) => {
-    const type = searchKey ? 'search' : 'discover';
-    const {
-      data: { results },
-    } = await axios.get(`${API_URL}/${type}/movie`, {
+  const fetchMovies = async () => {
+    if (movieId) {
+      const {
+        data: { results },
+      } = await axios.get(`${API_URL}/movie/${movieId}/similar`, {
+        params: {
+          api_key: API_KEY,
+          language: 'en-US',
+          page: 1,
+        },
+      });
+
+      setMovies(results);
+    }
+  };
+
+  const fetchGenres = async () => {
+    const response = await axios.get(`${API_URL}/genre/movie/list`, {
       params: {
         api_key: API_KEY,
-        query: searchKey,
+        language: 'en-US',
       },
     });
-
-    setMovies(results);
+    const genresMap = response.data.genres.reduce((acc, genre) => {
+      acc[genre.id] = genre.name;
+      return acc;
+    }, {});
+    setGenres(genresMap);
   };
 
   useEffect(() => {
     fetchMovies();
+    fetchGenres();
     window.addEventListener('resize', handleResize); // Agregar el evento resize al montar el componente
     return () => {
       window.removeEventListener('resize', handleResize); // Eliminar el evento resize al desmontar el componente
     };
-  }, []);
+  }, [movieId]);
 
   // Función para manejar el cambio de tamaño de viewport
   const handleResize = () => {
@@ -51,6 +68,13 @@ function Related() {
     } else {
       setGroupSize(5);
     }
+  };
+
+  const renderGenres = (genreIds) => {
+    return genreIds
+      .map((genreId) => genres[genreId])
+      .filter((genre) => genre) // Filtrar los géneros que existen en la lista de géneros
+      .join(', ');
   };
 
   // Código para el renderizado de los slides
@@ -63,41 +87,70 @@ function Related() {
       acc[groupIndex].push(movie);
       return acc;
     }, []);
-
+  
     return groups.map((group, index) => (
       <Carousel.Item key={index}>
         <Row xs={3} md={5} lg={5} className="m-3 align align-items-center justify-content-center">
-          {group.map((movie) => (
-            <Card key={movie.id} style={{ background: 'none' }}>
-              <Link to={`/detalle/${movie.id}`}>
-                <Card.Img src={`${URL_IMAGE}${movie.poster_path}`} />
-                <Card.ImgOverlay id="overlay">
-                  <Card.Text className="text-white m-1 text">
-                    {[1, 2, 3, 4, 5].map((index) => (
-                      <img src={star} className="star mb-3 bi bi-star-fill" style={{ width: starSize }} key={index} />
-                    ))}
-                    <h3>{movie.title}</h3>
-                    <p>
-                      <b>{movie.release_date}</b>
-                    </p>
-                    <p>
-                      Generos: <b>{movie.genre_ids}</b>
-                    </p>
-                  </Card.Text>
-                </Card.ImgOverlay>
-              </Link>
-            </Card>
-          ))}
+          {group.map((movie) => {
+            if (movie.poster_path) {
+              return (
+                <Card key={movie.id} style={{ background: 'none' }}>
+                  <Link to={`/detalle/${movie.id}`}>
+                    <Card.Img src={`${URL_IMAGE}${movie.poster_path}`} />
+                    <Card.ImgOverlay id="overlay">
+                      <Card.Text className="text-white m-1 text">
+                        {[1, 2, 3, 4, 5].map((index) => (
+                          <img src={star} className="star mb-3 bi bi-star-fill" alt='estrella' style={{ width: starSize }} key={index} />
+                        ))}
+                        <h3>{movie.title}</h3>
+                        <p>
+                          <b>{movie.release_date}</b>
+                        </p>
+                        <p>
+                          Generos: <b>{renderGenres(movie.genre_ids)}</b>
+                        </p>
+                      </Card.Text>
+                    </Card.ImgOverlay>
+                  </Link>
+                </Card>
+              );
+            }
+            return null; // Si no hay imagen, retornar null para evitar el renderizado de la película sin imagen
+          })}
         </Row>
       </Carousel.Item>
     ));
   };
+  
 
   return (
-    <Carousel indicators={false} fade prevIcon={<span className="bi bi-caret-left-fill carousel-control-prev" style={{ color: 'white', background: 'none', border: 'none', fontSize: '4vw' }} />} nextIcon={<span className="bi bi-caret-right-fill carousel-control-next" style={{ color: 'white', background: 'none', border: 'none', fontSize: '4vw' }} />}>
-
+    <Carousel
+      indicators={false}
+      fade
+      prevIcon={
+        <span
+          className="bi bi-caret-left-fill carousel-control-prev"
+          style={{
+            color: 'white',
+            background: 'none',
+            border: 'none',
+            fontSize: '4vw',
+          }}
+        />
+      }
+      nextIcon={
+        <span
+          className="bi bi-caret-right-fill carousel-control-next"
+          style={{
+            color: 'white',
+            background: 'none',
+            border: 'none',
+            fontSize: '4vw',
+          }}
+        />
+      }
+    >
       {renderSlides()}
-
     </Carousel>
   );
 }

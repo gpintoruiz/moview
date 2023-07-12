@@ -18,16 +18,30 @@ function InTheater() {
 
   // Declaracion de las variables de estado
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  const [genres, setGenres] = useState({});
   const [movie, setMovie] = useState({ titel: 'Loading Movies' });
   const [groupSize, setGroupSize] = useState(5); // Valor inicial
 
-  // Petición a la API
+  // Petición a la API para obtener la lista de géneros
+  const fetchGenres = async () => {
+    const response = await axios.get(`${API_URL}/genre/movie/list`, {
+      params: {
+        api_key: API_KEY,
+        language: 'en-US',
+      },
+    });
+    const genresMap = response.data.genres.reduce((acc, genre) => {
+      acc[genre.id] = genre.name;
+      return acc;
+    }, {});
+    setGenres(genresMap);
+  };
+
+  // Petición a la API para obtener las peliculas en teatro
   const fetchMovies = async (searchKey) => {
-    const type = searchKey ? 'search' : 'discover';
     const {
       data: { results },
-    } = await axios.get(`${API_URL}/${type}/movie`, {
+    } = await axios.get(`${API_URL}/movie/now_playing`, {
       params: {
         api_key: API_KEY,
         query: searchKey,
@@ -39,10 +53,7 @@ function InTheater() {
   };
 
   useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  useEffect(() => {
+    fetchGenres();
     fetchMovies();
     window.addEventListener('resize', handleResize); // Agregar el evento resize al montar el componente
     return () => {
@@ -57,6 +68,13 @@ function InTheater() {
     } else {
       setGroupSize(5);
     }
+  };
+
+  const renderGenres = (genreIds) => {
+    return genreIds
+      .map((genreId) => genres[genreId])
+      .filter((genre) => genre) // Filtrar los géneros que existen en la lista de géneros
+      .join(', ');
   };
 
   // Código para el renderizado de los slides
@@ -80,14 +98,14 @@ function InTheater() {
                 <Card.ImgOverlay id="overlay">
                   <Card.Text className="text-white m-1 text">
                     {[1, 2, 3, 4, 5].map((index) => (
-                      <img src={star} className="star mb-3 bi bi-star-fill" style={{ width: starSize }} key={index} />
+                      <img src={star} className="star mb-3 bi bi-star-fill" style={{ width: starSize }} key={index} alt='estrella' />
                     ))}
                     <h3>{movie.title}</h3>
                     <p>
                       <b>{movie.release_date}</b>
                     </p>
                     <p>
-                      Generos: <b>{movie.genre_ids}</b>
+                      <b>Generos: {renderGenres(movie.genre_ids)}</b>
                     </p>
                   </Card.Text>
                 </Card.ImgOverlay>
@@ -109,3 +127,4 @@ function InTheater() {
 }
 
 export default InTheater;
+

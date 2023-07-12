@@ -1,69 +1,80 @@
 import axios from 'axios';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import './Buscador.css'
-
+import { Typeahead } from 'react-bootstrap-typeahead';
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import './Buscador.css';
+import { Link } from 'react-router-dom';
 
 function Buscador() {
+  // Constantes de la API
+  const API_URL = 'https://api.themoviedb.org/3';
+  const API_KEY = '49149d975d5c0df0a79802f0a64ad893';
 
-  //Constantes de la API
-
-  const API_URL = 'https://api.themoviedb.org/3'
-  const API_KEY='49149d975d5c0df0a79802f0a64ad893'
-  const IMAGE_PATH = 'https://image.tmdb.org/t/p/original'
-  const URL_IMAGE = 'https://image.tmdb.org/t/p/original'
-
-  // Declaracion de las variables de estado
-
-  const [movies,setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState("");
-  const [movie,setMovie] = useState({titel:"Loading Movies"});
+  // Declaración de las variables de estado
+  const [movies, setMovies] = useState([]);
+  const [searchKey, setSearchKey] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   // Función para buscar películas
-
-  const searchMovies = (e) => {
-    e.preventDefault();
-    fetchMovies(searchKey)
-  }
-
-  //Petición a la API
-
-  const fetchMovies = async(searchKey) =>{
-    const type = searchKey ? "search" : "discover"
-    const {data:{results},
-    } = await axios.get(`${API_URL}/${type}/movie` , {
-        params : {
-            api_key: API_KEY,
-            query: searchKey,
-        },
+  const searchMovies = async (query) => {
+    const { data } = await axios.get(`${API_URL}/search/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: query,
+      },
     });
 
-    setMovies(results)
-    setMovie(results[0])
-  }
+    setMovies(data.results);
+  };
 
-  useEffect(()=>{
-      fetchMovies();
-  },[])
+  useEffect(() => {
+    searchMovies(searchKey);
+  }, [searchKey]);
+
+  const handleMovieSelection = (selected) => {
+    if (selected.length > 0) {
+      setSelectedMovie(selected[0]);
+    }
+  };
+
+  const renderMovieLink = (movie) => {
+    return (
+      <Link to={`/detalle/${movie.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <div>
+          <img
+            src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+            alt={movie.title}
+            style={{ height: '30px', marginRight: '10px' }}
+          />
+          {movie.title}
+        </div>
+      </Link>
+    );
+  };
 
   return (
-    <Form className="d-flex" onSubmit={searchMovies}>
-      <Form.Control
-        type="text"
+    <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
+      <Typeahead
+        id="movie-search"
+        labelKey="title"
+        options={movies}
         placeholder="Search"
         className="me-2 ms-2 buscador"
-        aria-label="Search" 
-        onChange={(e)=>setSearchKey(e.target.value)}
-        style={{width:'40vw'}}
+        onChange={handleMovieSelection}
+        onInputChange={(query) => setSearchKey(query)}
+        style={{ width: '40vw' }}
+        renderMenuItemChildren={(option) => renderMovieLink(option)}
       />
       <Button
         className="bi bi-search"
         variant="outline-secondary"
         style={{ border: 'none', color: 'white' }}
+        onClick={() => setSelectedMovie(null)}
       ></Button>
     </Form>
-  )
+  );
 }
 
-export default Buscador
+export default Buscador;

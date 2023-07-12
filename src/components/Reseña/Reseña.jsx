@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Card from 'react-bootstrap/Card';
 
 function Reseña({ movieId }) {
   const [reviews, setReviews] = useState([]);
@@ -12,7 +13,7 @@ function Reseña({ movieId }) {
       const response = await axios.get(`${API_URL}/movie/${movieId}/reviews`, {
         params: {
           api_key: API_KEY,
-          language: 'en-US',
+          language: 'en-ES',
           page: 1,
         },
       });
@@ -23,17 +24,30 @@ function Reseña({ movieId }) {
     fetchReviews();
   }, [movieId]);
 
+  const truncateContent = (content, length) => {
+    if (content.length > length) {
+      return content.substring(0, length) + '...';
+    }
+    return content;
+  };
+
   return (
     <div>
       {reviews.length > 0 ? (
-        <ul>
+        <div className="card-deck">
           {reviews.map((review) => (
-            <li key={review.id}>
-              <p>Author: {review.author}</p>
-              <p>Content: {review.content}</p>
-            </li>
+            <Card bg='dark' text='white' key={review.id} className="mb-3" style={{ width: '85rem' }}> 
+              <Card.Body>
+                <Card.Title >Reseña de: {review.author}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Escrita el: {review.created_at}</Card.Subtitle>
+                <Card.Text>{truncateContent(review.content, 500)}</Card.Text>
+                <Card.Link href={review.url} target="_blank">
+                  Leer reseña completa
+                </Card.Link>
+              </Card.Body>
+            </Card>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No hay reseñas disponibles.</p>
       )}

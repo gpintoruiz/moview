@@ -18,17 +18,15 @@ function Trending() {
 
   // Declaracion de las variables de estado
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  const [genres, setGenres] = useState({});
   const [movie, setMovie] = useState({ title: 'Loading Movies' });
 
-  const fetchMovies = async (searchKey) => {
-    const type = searchKey ? 'search' : 'discover';
+  const fetchMovies = async () => {
     const {
       data: { results },
     } = await axios.get(`${API_URL}/trending/movie/day`, {
       params: {
         api_key: API_KEY,
-        query: searchKey,
         language: 'en-US',
       },
     });
@@ -37,42 +35,65 @@ function Trending() {
     setMovie(results[0]);
   };
 
+  const fetchGenres = async () => {
+    const response = await axios.get(`${API_URL}/genre/movie/list`, {
+      params: {
+        api_key: API_KEY,
+        language: 'en-US',
+      },
+    });
+    const genresMap = response.data.genres.reduce((acc, genre) => {
+      acc[genre.id] = genre.name;
+      return acc;
+    }, {});
+    setGenres(genresMap);
+  };
+
   useEffect(() => {
     fetchMovies();
+    fetchGenres();
   }, []);
+
+  const renderGenres = (genreIds) => {
+    return genreIds
+      .map((genreId) => genres[genreId])
+      .filter((genre) => genre) // Filtrar los géneros que existen en la lista de géneros
+      .join(', ');
+  };
 
   const renderSlides = () => {
     return movies.map((movie) => (
       <div key={movie.id}>
         <Row className='g-4 align align-items-center justify-content-center'>
-        <Link to={`/detalle/${movie.id}`}>
-          <Card Classname='t-card' style={{background:'none', width:'30vw'}}>
-            <Card.Img Classname='t-card-img'
-              src={`${URL_IMAGE}${movie.poster_path}`}
-              alt="Card image"
-            />
-            <Card.ImgOverlay id="t-overlay" >
-              <Card.Text className="text-white t-text">
-                {[1, 2, 3, 4, 5].map((index) => (
-                  <img
-                    src={star}
-                    className=" star mb-3 bi bi-star-fill"
-                    style={{ width: starSize, color: 'yellow' }}
-                    key={index}
-                  />
-                ))}
-                <h3>
-                  <b>{movie.title}</b>
-                </h3>
-                <p>
-                  <b>{movie.release_date}</b>
-                </p>
-                <p>
-                  <b>Generos: {movie.genre_ids}</b>
-                </p>
-              </Card.Text>
-            </Card.ImgOverlay>
-          </Card>
+          <Link to={`/detalle/${movie.id}`}>
+            <Card Classname='t-card' style={{ background: 'none', width: '30vw' }}>
+              <Card.Img Classname='t-card-img'
+                src={`${URL_IMAGE}${movie.poster_path}`}
+                alt="Card image"
+              />
+              <Card.ImgOverlay id="t-overlay" >
+                <Card.Text className="text-white t-text">
+                  {[1, 2, 3, 4, 5].map((index) => (
+                    <img
+                      src={star}
+                      className=" star mb-3 bi bi-star-fill"
+                      style={{ width: starSize, color: 'yellow' }}
+                      key={index}
+                      alt='estrella'
+                    />
+                  ))}
+                  <h3>
+                    <b>{movie.title}</b>
+                  </h3>
+                  <p>
+                    <b>{movie.release_date}</b>
+                  </p>
+                  <p>
+                    <b>Generos: {renderGenres(movie.genre_ids)}</b>
+                  </p>
+                </Card.Text>
+              </Card.ImgOverlay>
+            </Card>
           </Link>
         </Row>
       </div>

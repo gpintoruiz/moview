@@ -24,7 +24,7 @@ function DetallePelicula() {
       const { data } = await axios.get(`${API_URL}/movie/${id}`, {
         params: {
           api_key: API_KEY,
-          append_to_response: 'videos',
+          append_to_response: 'videos,reviews',
         },
       });
 
@@ -40,7 +40,9 @@ function DetallePelicula() {
   }, [id]);
 
   const handleShowTrailer = () => {
-    setShowTrailer(true);
+    if (trailer) {
+      setShowTrailer(true);
+    }
   };
 
   const handleCloseTrailer = () => {
@@ -54,8 +56,7 @@ function DetallePelicula() {
   return (
     <>
       {/* Div que contiene toda la descripcion basica de la pelicula */}
-      <div className='DP-container d-flex' style={{background: `linear-gradient(rgba(5, 7, 12, 0.85), rgba(5, 7, 12, 0.85)), url(${URL_IMAGE}${movie.poster_path})`}}>
-        {/* Fila "principal" que divide el div en 2 columnas */}
+      <div className='DP-container d-flex' style={{background: `linear-gradient(rgba(5, 7, 12, 0.85), rgba(5, 7, 12, 0.85)), url(${URL_IMAGE}${movie.poster_path})`}}>        {/* Fila "principal" que divide el div en 2 columnas */}
         <Row className='d-flex align-items-center justify-content-center' style={{ margin: '0px' }}>
           {/* Columna del poster de la pelicula */}
           <Col xs={10} sm={4} lg={4} className='DP-poster d-flex align-items-center justify-content-center'>
@@ -86,14 +87,14 @@ function DetallePelicula() {
               <Col xs={4} sm={3.5} lg={3.5} className='DP-informacion d-flex flex-column text-center'>
                 <img src={rottenT} style={{ width: '60px', alignSelf: 'center' }} alt='RottenTomatoes Icon' />
                 <p>
-                  Puntuacion de Rotten Tomatoes: <b>{movie.vote_average}%</b>
+                  Puntuacion de Rotten Tomatoes: <b>{movie.vote_average}/10</b>
                 </p>
               </Col>
 
               <Col xs={4} sm={3.5} lg={3.5} className='DP-informacion d-flex flex-column text-center'>
                 <img src={Metta} style={{ width: '60px', alignSelf: 'center' }} alt='Mettacritics Icon' />
                 <p>
-                  Puntuacion de MetaCritics: <b>{movie.vote_average}%</b>
+                  Puntuacion de MetaCritics: <b>{movie.vote_average}/10</b>
                 </p>
               </Col>
 
@@ -123,34 +124,39 @@ function DetallePelicula() {
         </Row>
       </div>
 
-      {/* Div que contiene la llamada al componente que genera el carrusel de peliculas similares */}
-      <div>
-        <h2 style={{ margin: '8px', color: 'white' }}>Peliculas similares:</h2>
-        <Related />
-      </div>
-
       {/* Div que contiene el componente que genera las reseñas */}
+
       <div>
         {/* link que lleva a la pagina de reseñas Completas */}
         {/* No se alcanzo a Implementar esa pagina por lo que lleva a la pagina de error */}
         <Link style={{ textDecoration: 'none' }} to='*'>
-          <h2 style={{ color: 'white', marginLeft: '10px' }}> Reseñas:</h2>
+          <h2 style={{ color: 'white'}} className='m-3'> Reseñas:</h2>
         </Link>
 
-        <Row className='d-flex ' style={{ margin: '0px' }}>
-          {[...Array(2)].map((_, index) => (
-            <Col xs={12} sm={6} lg={6} key={index} className='DP-informacion d-flex flex-column mb-3'>
-              <Reseña movieId={id} />
-            </Col>
-          ))}
+        <Row className='d-flex align-items-center justify-content-center' style={{ margin: '0px' }}>
+          <Col xs={12} sm={12} lg={12} className='DP-informacion d-flex flex-column mb-3 align-items-center justify-content-center'>
+            <Reseña movieId={id} centered/>
+        </Col>
         </Row>
       </div>
 
-      {/* Código completo del Modal */}
+      {/* Div que contiene la llamada al componente que genera el carrusel de peliculas similares */}
+      <div>
+        <h2 style={{ margin: '8px', color: 'white' }}>Peliculas similares:</h2>
+        <Related movieId={id}/>
+      </div>
+
+      
+    
+      
+
+      {/* Código completo del Modal del Trailer*/}
       <Modal show={showTrailer} onHide={handleCloseTrailer} size='lg' centered>
-        <Modal.Body>
+      <Modal.Body>
+        {trailer && (
           <iframe
             src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1`}
+            title='trailer'
             style={{
               width: '100%',
               height: '75vh',
@@ -158,15 +164,16 @@ function DetallePelicula() {
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
             allowFullScreen
           ></iframe>
-        </Modal.Body>
-        <Modal.Footer className='align-items-center justify-content-center'>
+        )}
+      </Modal.Body>
+      <Modal.Footer className='align-items-center justify-content-center'>
           {/* Boton para cerrar el Modal (aunque tambien clickeando fuera se cierra) */}
           <Button variant='outline-dark' onClick={handleCloseTrailer}>
             Visto
           </Button>
         </Modal.Footer>
-      </Modal>
-    </>
+    </Modal>
+  </>
   );
 }
 

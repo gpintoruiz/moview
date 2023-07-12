@@ -47,7 +47,7 @@ function Footer() {
         {/* Código de la segunda fila que tiene el Disclaimer */}
       <Row className='text-center'>
           <p className='mb-4 mt-5 h6' style={{color:'#C2C2C2'}}>            
-            Disclaimer: no copyright content is hosted on this server, all te files are hosted on third party websites by using our website you comply and agree with our TOC and Cookie Policy
+          Descargo de responsabilidad: ningún contenido con derechos de autor está alojado en este servidor, todos los archivos están alojados en sitios web de terceros. Al utilizar nuestro sitio web, usted cumple y acepta nuestra TOC y nuestra Política de cookies.
           </p>
       </Row>
     </Container>
