@@ -3,31 +3,56 @@ import React, { useState } from 'react';
 import './registrarse.css'
 
 function Registro() {
+    const [username, setUsername] = useState('');
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-
     const [password, setPassword] = useState('');
     const [password_2, setPassword_2] = useState('');
     const [showPwd, setShowPwd] = useState(false);
     const [message, setMessage] = useState('');
 
     const handleResetFields = () => {
-      if (password === password_2 && password !== '') {
+      
+      /*Comprobacion de que el email sea valido por medio de una expresion regular*/
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+      const isValidEmail = emailRegex.test(email);
+
+      /*Comprobacion de que todos los espacios esten llenos, el email sea valido y 
+      que las contraseñas sean iguales*/
+      if (password === password_2 && password !== '' && isValidEmail===true && username !=='' && name !=='') {
         setEmail('');
         setPassword('');
         setPassword_2('');
-        alert('Registro Exitoso!');
         setMessage('');
+        setUsername('');
+        setName('');
+        alert('Registro Exitoso!');
       } else {
-        setMessage(<p className="text-danger p-2">Invalid email or password.</p>);
+        setMessage(<p className="text-danger p-2">Invalid email, username, name or password.</p>);
       }
     };
 
   return (
     <>
       <Card id='Registro' className='mb-4 mt-4 bg-light p-5 d-flex flex-column align-items-center' style={{ borderRadius: '1rem', width:'40vw', margin:'auto'}}>
-      <h2 className="fw-bold mb-2 text-uppercase">Registro</h2>
-      <p className="text-black-50 mb-5">Please enter your email and password!</p>
-      <Form className='bg-light d-flex flex-column align-items-center'>
+        <h2 className="fw-bold mb-2 text-uppercase">Registro</h2>
+        <p className="text-black-50 mb-5">Please enter your email and password!</p>
+        <Form className='bg-light d-flex flex-column align-items-center'>
+
+          {/* Este form group es el campo del UserName */}
+          <Form.Group className='mb-4 mx-5 w-100'>
+            <Form.Label className='text-black'>Username</Form.Label>
+            <Form.Control type='text' size='lg' placeholder='Username' value={username} name='Username'
+            onChange={({target}) => setUsername(target.value)}/>
+          </Form.Group>
+
+          {/* Este form group es el campo del Nombre */}
+          <Form.Group className='mb-4 mx-5 w-100'>
+            <Form.Label className='text-black'>Full name</Form.Label>
+            <Form.Control type='text' size='lg' placeholder='Name' value={name} name='name'
+            onChange={({target}) => setName(target.value)}/>
+          </Form.Group>
+
           {/* Este form group es el campo del Email */}
 
           <Form.Group className='mb-4 mx-5 w-100'>
@@ -63,7 +88,7 @@ function Registro() {
             Registro
           </Button>
           <p>{message}</p>
-      </Form>
+        </Form>
       </Card>
     </>
   );

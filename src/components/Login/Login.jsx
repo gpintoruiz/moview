@@ -40,7 +40,6 @@ import { AuthContext } from '../../AuthContext';
     const [email, setEmail] = useState(localStorage.getItem('email') || '');
     const [password, setPassword] = useState(localStorage.getItem('password') || '');
 
-
     
     const handleLogin = async (event) => {
       event.preventDefault();
