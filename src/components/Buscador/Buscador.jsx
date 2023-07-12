@@ -16,6 +16,7 @@ function Buscador() {
   const [movies, setMovies] = useState([]);
   const [searchKey, setSearchKey] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [clearSearch, setClearSearch] = useState(false); // Estado para limpiar la búsqueda
 
   // Función para buscar películas
   const searchMovies = async (query) => {
@@ -32,6 +33,14 @@ function Buscador() {
   useEffect(() => {
     searchMovies(searchKey);
   }, [searchKey]);
+
+  useEffect(() => {
+    // Limpiar la búsqueda cuando se selecciona una película
+    if (selectedMovie) {
+      setSearchKey('');
+      setClearSearch(true);
+    }
+  }, [selectedMovie]);
 
   const handleMovieSelection = (selected) => {
     if (selected.length > 0) {
@@ -64,6 +73,7 @@ function Buscador() {
         className="me-2 ms-2 buscador"
         onChange={handleMovieSelection}
         onInputChange={(query) => setSearchKey(query)}
+        selected={clearSearch ? [] : undefined}
         style={{ width: '40vw' }}
         renderMenuItemChildren={(option) => renderMovieLink(option)}
       />
