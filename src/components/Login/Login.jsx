@@ -1,7 +1,7 @@
 import { Form, Button, Modal, InputGroup } from 'react-bootstrap';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import loginService  from '../../services/login';
 import { AuthContext } from '../../AuthContext';
 
@@ -12,13 +12,8 @@ import { AuthContext } from '../../AuthContext';
     const [user, setUser] = useState(null)
 
 
-    useEffect(() =>{
-      const loggedUserJSON = window.localStorage.getItem('loggedAppUser')
-      if(loggedUserJSON){
-        const user = JSON.parse(loggedUserJSON)
-        setUser(user)
-      }
-    },[])
+    const { login } = useContext(AuthContext);
+
 
     // Funcion del reCAPTCHA
     function onChange(value) {
@@ -59,22 +54,21 @@ import { AuthContext } from '../../AuthContext';
       }
   
       try {
-        const user = await loginService.login({
-          email,
-          password
-        })
+        const success = await login(email, password);
     
-        window.localStorage.setItem(
-          'loggedAppUser', JSON.stringify(user)
-        )
+        if (success){
+          loginService.setToken(user.token)
   
-        setUser(user)
-        setEmail('')
-        setPassword('')
-        setIsLoggedIn(true);
-        setShowError(false);
-        handleClose();
-        navigate('/');
+          setUser(user)
+          setEmail('')
+          setPassword('')
+          setIsLoggedIn(true);
+          setShowError(false);
+          handleClose();
+          navigate('/');
+        }
+
+        
       } catch(e) {
         setShowError(true)
         setTimeout(() => {

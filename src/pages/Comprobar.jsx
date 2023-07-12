@@ -25,4 +25,3 @@ const Comprobar = () => {
 };
 
 export default Comprobar;
-

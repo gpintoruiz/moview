@@ -11,13 +11,11 @@ import Notification from '../Notification/Notification'
 import Buscador from '../Buscador/Buscador';
 
 function NavHeader() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // setUser(null)
-    setIsLoggedIn(false);
-    window.localStorage.removeItem('loggedAppUser')
+    logout();
     navigate('/');
   };
 
