@@ -1,17 +1,46 @@
 require('dotenv').config()
 require('./mongo') //Esto ejecuta todo el fichero de mongo que se conecta a la Base de datos
 
-const Usuario = require('./models/Usuario')
+const User = require('./models/User')
 
-const express = require('express')
+const express = require('express');
+const Sentry = require('@sentry/node');
 const app = express()
 const logger = require('./loggerMiddleware')
 const cors = require('cors')
 const notFound = require('./middleware/notFound')
 const handleErrors = require('./middleware/handleErrors')
+const bcrypt = require('bcrypt')
+const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
+const jwt = require('jsonwebtoken')
 
 app.use(cors())
 app.use(express.json())
+
+//Sentry sirve para el manejo de errores en gran escala, ya que en su plataforma nos proporciona información de cada petición con error
+Sentry.init({
+  dsn: "https://bcbedbb8fca54318afc2c7879d9a2c85@o4505512890925056.ingest.sentry.io/4505512892235776",
+  integrations: [
+    // enable HTTP calls tracing
+    new Sentry.Integrations.Http({ tracing: true }),
+    // enable Express.js middleware tracing
+    new Sentry.Integrations.Express({ app }),
+    // Automatically instrument Node.js libraries and frameworks
+    ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),
+  ],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
+
+// RequestHandler creates a separate execution context, so that all
+// transactions/spans/breadcrumbs are isolated across requests
+app.use(Sentry.Handlers.requestHandler());
+// TracingHandler creates a trace for every incoming request
+app.use(Sentry.Handlers.tracingHandler());
 
 app.use(logger)
 
@@ -19,71 +48,48 @@ app.get('/', (request, response) =>{
   response.send('<h1>Hellow World</h1>')
 })
 
-app.put('/api/usuarios/:id', (request, response, next) => {
+app.get('/api/users/:id', async(request, response,next)=>{
   const {id} = request.params
-  const usuario = request.body
+
+  await User.findById(id).then(user =>{
+    if (user) return response.json(user)
+    response.status(404).end()
+  }).catch(err => next(err))
+})
+
+app.put('/api/users/:id', async(request, response, next) => {
+  const {id} = request.params
+  const user = request.body
+
+  const passwordHash = await bcrypt.hash(user.password, 10)
 
   const newUserInfo = {
-    password: usuario.password,
-    nombre: usuario.nombre,
-    email: usuario.email,
-    pais: usuario.pais
+    passwordHash: passwordHash,
+    name: user.name,
+    username: user.username,
+    email: user.email
   }
 
-  Usuario.findByIdAndUpdate(id, newUserInfo, {new: true})
+  await User.findByIdAndUpdate(id, newUserInfo, {new: true})
     .then(result => {
       response.json(result)
     }).catch(err => next(err))
 })
 
-app.get('/api/usuarios',(request, response, next)=>{
-  Usuario.find({}).then(usuarios =>{
-    response.json(usuarios)
-  }).catch(err => next(err))
-})
-
-app.get('/api/usuarios/:id',(request, response,next)=>{
-  const {id} = request.params
-
-  Usuario.findById(id).then(usuario =>{
-    if (usuario){
-      return response.json(usuario)
-    } else{
-      response.status(404).end()
-    }
-  }).catch(err => next(err))
-})
-
-app.delete('/api/usuarios/:id',(request, response,next)=>{
+app.delete('/api/users/:id', async (request, response,next)=>{
   const {id}  = request.params
   
-  Usuario.findByIdAndRemove(id).then(() =>{
+  await User.findByIdAndDelete(id).then(() =>{
     response.status(204).end()
   }).catch(err => next(err))
 })
 
-app.post('/api/usuarios',(request, response, next)=>{
-  const usuario = request.body
-
-  if (!usuario || !usuario.password){
-    return response.status(400).json({
-      error: 'usuario.password is missing'
-    })
-  }
-
-  const newUsuario = new Usuario({
-    nombre: usuario.nombre,
-    pais: usuario.pais,
-    password: usuario.password,
-    email: usuario.email
-  })
-
-  newUsuario.save().then(savedUser => {
-    response.status(201).json(savedUser)
-  }).catch(err => next(err))
-})
+app.use('/api/users', usersRouter)
+app.use('/api/login', loginRouter)
 
 app.use(notFound)
+
+app.use(Sentry.Handlers.errorHandler()); 
 
 app.use(handleErrors)
 

@@ -1,9 +1,0 @@
-POST http://localhost:3001/api/usuarios 
-content-Type: application/json
-
-{
-    "nombre": "Pedro Sanchez",
-    "pais": "Colombia",
-    "email": "oasasd@gmail.com",
-    "password": "Cabeza"
-}

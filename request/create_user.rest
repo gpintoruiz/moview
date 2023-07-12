@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/users 
+content-Type: application/json
+
+{
+    "name": "socios Sanchez",
+    "username": "karlitos",
+    "pais": "Colombia",
+    "email": "oesasdaa@gmail.com",
+    "password": "Cabaaasdeza"
+}
