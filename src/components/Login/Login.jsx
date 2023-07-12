@@ -156,7 +156,7 @@ import { AuthContext } from '../../AuthContext';
           {/* En este div está la opción de que si el usuario no tiene cuenta, lo envie a una página donde la pueda crear */}
 
             <div>
-              <p className="mb-0">Don't have an account? <Link to="#!" className="text-black-50 fw-bold text-decoration-none">Sign Up</Link></p>
+              <p className="mb-0">Don't have an account? <Link to="/registro" onClick={handleClose} className="text-black-50 fw-bold text-decoration-none">Sign Up</Link></p>
             </div>
           </Modal.Body>
         </Modal>

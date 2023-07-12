@@ -9,6 +9,7 @@ import Error from "./pages/Error404/Error404"
 import Comprobar from "./pages/Comprobar";
 import { AuthProvider } from './AuthContext';
 import Detalle from './pages/DetallePelicula/DetallePelicula'
+import Registro from "./pages/Registrarse/registrarse";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<Error />} />
           <Route path='/comprobar' element={<Comprobar />} />
           <Route path="/detalle" element={<Detalle/>}/>
+          <Route path="/registro" element = {<Registro/>}/>
         </Routes>
         <Footer />
       </Router>
