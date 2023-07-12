@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './registrarse.css'
 
 function Registro() {
+
+    /*Declaracion de UserState para los datos del formulario */
     const [username, setUsername] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -11,7 +13,7 @@ function Registro() {
     const [showPwd, setShowPwd] = useState(false);
     const [message, setMessage] = useState('');
 
-    const handleResetFields = () => {
+    const handleFields = () => {
       
       /*Comprobacion de que el email sea valido por medio de una expresion regular*/
       const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -34,6 +36,7 @@ function Registro() {
 
   return (
     <>
+      {/* Card que contiene el formulario */}
       <Card id='Registro' className='mb-4 mt-4 bg-light p-5 d-flex flex-column align-items-center' style={{ borderRadius: '1rem', width:'40vw', margin:'auto'}}>
         <h2 className="fw-bold mb-2 text-uppercase">Registro</h2>
         <p className="text-black-50 mb-5">Please enter your email and password!</p>
@@ -54,7 +57,6 @@ function Registro() {
           </Form.Group>
 
           {/* Este form group es el campo del Email */}
-
           <Form.Group className='mb-4 mx-5 w-100'>
             <Form.Label className='text-black'>Email address</Form.Label>
             <Form.Control type='email' size='lg' placeholder='Email' value={email} name='email'
@@ -62,12 +64,10 @@ function Registro() {
           </Form.Group>
 
           {/* Este form group es el campo del password */}
-
           <Form.Group className='mb-4 mx-5 w-100'>
             <Form.Label className='text-black'>Password</Form.Label>
 
             {/* Este InputGroup se encarga del password y de la funcionalidad del ojito */}
-
             <InputGroup className="mb-3">
               <Form.Control required type={showPwd ? 'text' : 'password' } size='lg' placeholder='Password' value={password} name='password' onChange={({target}) => setPassword(target.value)}/>
               {showPwd ? <Button onClick={() => setShowPwd(!showPwd)} className='bi bi-eye-fill bg-white' style={{borderLeft:'transparent', borderColor:'#CED4DA', color:'black'}}></Button> 
@@ -77,17 +77,18 @@ function Registro() {
             <Form.Label className='text-black'>Confirm your password</Form.Label>
               
             {/* Este InputGroup se encarga del password y de la funcionalidad del ojito */}
-              
             <InputGroup className="mb-3">
               <Form.Control required type={showPwd ? 'text' : 'password' } size='lg' placeholder='Confirm Password' value={password_2} name='password-2' onChange={({target}) => setPassword_2(target.value)}/>
               {showPwd ? <Button onClick={() => setShowPwd(!showPwd)} className='bi bi-eye-fill bg-white' style={{borderLeft:'transparent', borderColor:'#CED4DA', color:'black'}}></Button> 
               : <Button className='bi bi-eye-slash-fill bg-white' onClick={() => setShowPwd(!showPwd)} style={{borderLeft:'transparent',borderColor:'#CED4DA', color:'black'}}></Button>}
             </InputGroup>
           </Form.Group>
-          <Button variant='outline-dark' className='mx-2 px-5' size='lg' onClick={handleResetFields}>
+
+          <Button variant='outline-dark' className='mx-2 px-5' size='lg' onClick={handleFields}>
             Registro
           </Button>
           <p>{message}</p>
+          
         </Form>
       </Card>
     </>
