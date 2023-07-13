@@ -14,8 +14,6 @@ function DetallePelicula() {
   const [movie, setMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
-  const [genres, setGenres] = useState({});
-
 
   const API_URL = 'https://api.themoviedb.org/3';
   const API_KEY = '49149d975d5c0df0a79802f0a64ad893';
@@ -147,10 +145,6 @@ function DetallePelicula() {
         <h2 style={{ margin: '8px', color: 'white' }}>Peliculas similares:</h2>
         <Related movieId={id}/>
       </div>
-
-      
-    
-      
 
       {/* Código completo del Modal del Trailer*/}
       <Modal show={showTrailer} onHide={handleCloseTrailer} size='lg' centered>
