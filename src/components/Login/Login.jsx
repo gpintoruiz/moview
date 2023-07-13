@@ -66,9 +66,12 @@ import { AuthContext } from '../../AuthContext';
           setShowError(false);
           handleClose();
           navigate('/');
+        } else{
+          setShowError(true)
+          setTimeout(() => {
+            setShowError(false)
+          }, 5000)
         }
-
-        
       } catch(e) {
         setShowError(true)
         setTimeout(() => {
@@ -92,7 +95,7 @@ import { AuthContext } from '../../AuthContext';
         <Modal show={show} onHide={handleClose} className='text-black'>
           <Modal.Body className='bg-light p-5 d-flex flex-column align-items-center' style={{ borderRadius: '1rem'}}>
             <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-            <p className="text-black-50 mb-5">Please enter your login and password!</p>
+            <p className="text-black-50 mb-5">¡Por favor, introduce tu usuario y contraseña!</p>
 
 
           <Form className='bg-light d-flex flex-column align-items-center' onSubmit={handleLogin}>
@@ -100,7 +103,7 @@ import { AuthContext } from '../../AuthContext';
             {/* Este form group es el campo del Email */}
 
             <Form.Group className='mb-4 mx-5 w-100'>
-              <Form.Label className='text-black'>Email address</Form.Label>
+              <Form.Label className='text-black'>Dirección de correo electrónico</Form.Label>
               <Form.Control type='email' size='lg' placeholder='Email' value={email} name='email'
               onChange={({target}) => setEmail(target.value)}/>
             </Form.Group>
@@ -108,7 +111,7 @@ import { AuthContext } from '../../AuthContext';
             {/* Este form group es el campo del password */}
 
             <Form.Group className='mb-4 mx-5 w-100'>
-              <Form.Label className='text-black'>Password</Form.Label>
+              <Form.Label className='text-black'>Constraseña</Form.Label>
 
               {/* Este InputGroup se encarga del password y de la funcionalidad del ojito */}
 
@@ -121,7 +124,7 @@ import { AuthContext } from '../../AuthContext';
             </Form.Group>
 
             <p className="small mb-3 pb-lg-2">
-              <Link className="text-black-50 text-decoration-none" to="#!">Forgot password?</Link>
+              <Link className="text-black-50 text-decoration-none" to="#!">¿Olvidó su contraseña?</Link>
             </p>
 
           {/* Codigo del reCAPTCHA */}
@@ -161,7 +164,7 @@ import { AuthContext } from '../../AuthContext';
           {/* En este div está la opción de que si el usuario no tiene cuenta, lo envie a una página donde la pueda crear */}
 
             <div>
-              <p className="mb-0">Don't have an account? <Link to="/registro" onClick={handleClose} className="text-black-50 fw-bold text-decoration-none">Sign Up</Link></p>
+              <p className="mb-0">¿No tienes una cuenta? <Link to="/registro" onClick={handleClose} className="text-black-50 fw-bold text-decoration-none">Registrate</Link></p>
             </div>
           </Modal.Body>
         </Modal>

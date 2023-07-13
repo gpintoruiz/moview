@@ -32,7 +32,10 @@ function Registro() {
           setMessage(<p className="text-danger p-2">Error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.</p>);
         }
       } else {
-        setMessage(<p className="text-danger p-2">Email, nombre de usuario, nombre o contraseña inválidos.</p>);
+        setMessage(<p className="text-danger p-2">Email, nombre de usuario, nombre o contraseña inválidos.</p>)
+        setTimeout(() => {
+          setMessage(false)
+        }, 5000);
       }
     };
 
@@ -41,33 +44,33 @@ function Registro() {
       {/* Card que contiene el formulario */}
       <Card id='Registro' className='mb-4 mt-4 bg-light p-5 d-flex flex-column align-items-center' style={{ borderRadius: '1rem', width:'40vw', margin:'auto'}}>
         <h2 className="fw-bold mb-2 text-uppercase">Registro</h2>
-        <p className="text-black-50 mb-5">Please enter your email and password!</p>
+        <p className="text-black-50 mb-5 text-center">¡Por favor, introduzca los siguientes datos para completar su registro!</p>
         <Form className='bg-light d-flex flex-column align-items-center'>
 
           {/* Este form group es el campo del UserName */}
           <Form.Group className='mb-4 mx-5 w-100'>
-            <Form.Label className='text-black'>Username</Form.Label>
+            <Form.Label className='text-black'>Nombre de usuario</Form.Label>
             <Form.Control type='text' size='lg' placeholder='Username' value={username} name='Username'
             onChange={({target}) => setUsername(target.value)}/>
           </Form.Group>
 
           {/* Este form group es el campo del Nombre */}
           <Form.Group className='mb-4 mx-5 w-100'>
-            <Form.Label className='text-black'>Full name</Form.Label>
+            <Form.Label className='text-black'>Nombre completo</Form.Label>
             <Form.Control type='text' size='lg' placeholder='Name' value={name} name='name'
             onChange={({target}) => setName(target.value)}/>
           </Form.Group>
 
           {/* Este form group es el campo del Email */}
           <Form.Group className='mb-4 mx-5 w-100'>
-            <Form.Label className='text-black'>Email address</Form.Label>
+            <Form.Label className='text-black'>Correo electrónico</Form.Label>
             <Form.Control type='email' size='lg' placeholder='Email' value={email} name='email'
             onChange={({target}) => setEmail(target.value)}/>
           </Form.Group>
 
           {/* Este form group es el campo del password */}
           <Form.Group className='mb-4 mx-5 w-100'>
-            <Form.Label className='text-black'>Password</Form.Label>
+            <Form.Label className='text-black'>Constraseña</Form.Label>
 
             {/* Este InputGroup se encarga del password y de la funcionalidad del ojito */}
             <InputGroup className="mb-3">
@@ -76,7 +79,7 @@ function Registro() {
               : <Button className='bi bi-eye-slash-fill bg-white' onClick={() => setShowPwd(!showPwd)} style={{borderLeft:'transparent',borderColor:'#CED4DA', color:'black'}}></Button>}
             </InputGroup>
 
-            <Form.Label className='text-black'>Confirm your password</Form.Label>
+            <Form.Label className='text-black'>Confirma tu contraseña</Form.Label>
               
             {/* Este InputGroup se encarga del password y de la funcionalidad del ojito */}
             <InputGroup className="mb-3">
@@ -86,10 +89,11 @@ function Registro() {
             </InputGroup>
           </Form.Group>
 
-          <Button variant='outline-dark' className='mx-2 px-5' size='lg' onClick={handleFields}>
-            Registro
-          </Button>
           <p>{message}</p>
+
+          <Button variant='outline-dark' className='mx-2 px-5' size='lg' onClick={handleFields}>
+            Registrarse!
+          </Button>
           
         </Form>
       </Card>

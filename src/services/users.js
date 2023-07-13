@@ -8,7 +8,7 @@ const create = async (userData) => {
 };
 
 const usersService = {
-  create,
+  create
 };
 
 export default usersService;

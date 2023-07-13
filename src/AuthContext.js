@@ -1,11 +1,15 @@
 import React, { createContext, useState, useEffect } from 'react';
 import loginService from './services/login';
+import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
+
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children}) => {
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate= useNavigate();
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedAppUser');
@@ -14,8 +18,17 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       setIsLoggedIn(true);
       loginService.setToken(user.token);
+
+      // Para verificar si el token ha expirado
+      const tokenExpiration = jwtDecode(user.token).exp;
+      const currentTimestamp = Math.floor(Date.now() / 1000);
+      if (tokenExpiration < currentTimestamp) {
+        logout();
+        navigate('/');
+      }
+
     }
-  }, []);
+  }, [navigate]);
 
   const login = async (email, password) => {
     try {

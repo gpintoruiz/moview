@@ -14,6 +14,8 @@ function DetallePelicula() {
   const [movie, setMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
   const [showTrailer, setShowTrailer] = useState(false);
+  const [genres, setGenres] = useState({});
+
 
   const API_URL = 'https://api.themoviedb.org/3';
   const API_KEY = '49149d975d5c0df0a79802f0a64ad893';
@@ -77,7 +79,7 @@ function DetallePelicula() {
                   <b>{movie.title}</b> ({movie.release_date.slice(0, 4)})
                 </h2>
                 <p>
-                  {movie.vote_average} - {movie.release_date} - {movie.runtime} min
+                  {movie.release_date} - {movie.runtime} min 
                 </p>
               </Col>
             </Row>

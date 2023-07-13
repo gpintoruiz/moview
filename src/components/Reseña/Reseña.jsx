@@ -36,7 +36,7 @@ function Reseña({ movieId }) {
       {reviews.length > 0 ? (
         <div className="card-deck">
           {reviews.map((review) => (
-            <Card bg='dark' text='white' key={review.id} className="mb-3" style={{ width: '85rem' }}> 
+            <Card bg='dark' text='white' key={review.id} className="mb-3" style={{ width: '85vw' }}> 
               <Card.Body>
                 <Card.Title >Reseña de: {review.author}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Escrita el: {review.created_at}</Card.Subtitle>

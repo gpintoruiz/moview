@@ -12,9 +12,10 @@ import Detalle from './components/DetallePelicula/DetallePelicula'
 import Registro from "./pages/Registrarse/registrarse";
 
 function App() {
+
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+    <AuthProvider >
         <NavHeader />
         <Routes>
           <Route index element={<Index />} />
@@ -25,8 +26,9 @@ function App() {
           <Route path="/registro" element = {<Registro/>}/>
         </Routes>
         <Footer />
-      </Router>
     </AuthProvider>
+    </Router>
+
   );
 }
 
