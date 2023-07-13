@@ -14,6 +14,7 @@ const bcrypt = require('bcrypt')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const jwt = require('jsonwebtoken')
+const userExtractor = require('./middleware/userExtractor')
 
 app.use(cors())
 app.use(express.json())
@@ -89,6 +90,7 @@ app.delete('/api/users/:id', async (request, response,next)=>{
 
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+app.use(userExtractor);
 
 app.use(notFound)
 
