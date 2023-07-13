@@ -28,7 +28,7 @@ loginRouter.post('/', async (request, response) => {
     userForToken,
     process.env.SECRET,
     {
-      expiresIn: 5
+      expiresIn: 60
     }
   )
 
