@@ -13,7 +13,6 @@ const handleErrors = require('./middleware/handleErrors')
 const bcrypt = require('bcrypt')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
-const jwt = require('jsonwebtoken')
 const userExtractor = require('./middleware/userExtractor')
 
 app.use(cors())
