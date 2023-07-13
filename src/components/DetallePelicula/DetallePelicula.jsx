@@ -135,7 +135,7 @@ function DetallePelicula() {
 
         <Row className='d-flex align-items-center justify-content-center' style={{ margin: '0px' }}>
           <Col xs={12} sm={12} lg={12} className='DP-informacion d-flex flex-column mb-3 align-items-center justify-content-center'>
-            <Reseña movieId={id} centered/>
+            <Reseña movieId={id}/>
         </Col>
         </Row>
       </div>
