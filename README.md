@@ -2,7 +2,7 @@
 Este es el backend de la aplicación Moview. Proporciona una API para acceder a datos de películas y realizar operaciones relacionadas.
 Instalación
 1. Clona este repositorio en tu máquina local:
-git clone https://github.com/Majinka10/moview.git
+git clone https://github.com/guillepinto/moview.git
 
 2. Accede al directorio del backend:
 
